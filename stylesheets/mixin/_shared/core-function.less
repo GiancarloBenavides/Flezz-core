@@ -9,7 +9,7 @@
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ///******************************************/
 @base: 10;
-
+//
 .fnt-padding(@opc-size: 4) {
     @fontBase: 1rem * (@opc-size + 6) * 1/10;
     @padSup: @fontBase * (@opc-size + 3) * 1/20;
@@ -32,8 +32,8 @@
     @{property}: ~"@{remValue}rem";
 }
 
-.hello{
-    .px-to-rem(font-size; 10px; true)
+.test-funcion{
+    .px-to-rem(font-size; 10px);
 }
 /* function ---------- [ + ] */@state: OK;
 ///******************************************/

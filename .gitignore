@@ -9,6 +9,8 @@
 _app_*/**/*
 _web_*/**/*
 test_*/**/*
+# ignorar todos los archivos css
+*.css
 # =========================
 # Windows image file caches
 Thumbs.db
