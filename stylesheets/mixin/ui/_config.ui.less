@@ -1,0 +1,52 @@
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: config component mixin
+///*  Version: 0.1.0
+///*  Description: description config component mixin
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///*  Tags: mixin, plugin, css.
+///******************************************/
+///*  	Content
+///*
+///*  1. Included modules.
+///*  2. statements.
+///*  3. initialized modules
+///******************************************/
+///* 1 *//* INCLUDED MODULES *///
+@import 'buttons.less';
+@import 'dropdown.less';
+@import 'gallery.less';
+@import 'tabs.less';
+@import 'inputs.less';
+@import 'tiles.less';
+@import 'popup.less';
+//
+///* 2 *//* STATEMENTS *///
+//
+///* Global variables */
+
+//
+///* local variables */
+.component-local-var() {
+    @link-bar-decoration: true;
+    @header-fixed: true;
+    @header-height: 50px;
+}
+//
+///* 3 *//* INITIALIZED MODULES */
+.ui-init() {
+    .component-local-var();
+    .button-init();
+    .dropdown-init();
+    .tabs-init();
+    .input-init();
+    .popup-init();
+}
+/* ui ------------- [ FULL ] */ @state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/

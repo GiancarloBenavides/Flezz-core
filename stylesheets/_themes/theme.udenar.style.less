@@ -1,0 +1,68 @@
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: Theme UDN
+///*  Version: 0.2.0
+///*  Description: description icons
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///*  Tags: flezz, mixin, plugin, css.
+///******************************************/
+//
+///* Unconfig Core *///
+@import '../core/mixin/_by_default.core.less';
+//
+///* Core Variables *///
+//
+///* PATH */
+@font-path: "../fonts";
+@icon-path: "../fonts";
+//
+///* Flezz overrrides *///
+@tiles-width-autoscale: false;
+@input-label-font-color: rgb(0,125,100); //#205081;
+@button-primary-background-color: #00715A;
+@button-secundary-background-color: #969696;
+@button-success-background-color: #60BA47;
+@button-danger-background-color: #C64521;
+
+@primary: #00715A;
+@secundary: #969696;
+@success: #60BA47;
+@danger: #C64521;
+
+@component-size: 5.5;
+@input-size: @component-size;
+@button-size: @component-size;
+//
+///* Flezz Core Init *///
+.flezz-font-init();
+.flezz-icon-init();
+.flezz-color-init();
+.design-init();
+.button-init();
+.tabs-init();
+.dropdown-init();
+.input-init();
+.tiles-init();
+.popup-init();
+//
+///* Docs Style *///
+
+.flezz {
+    background-color: #1a1d50;
+    &:hover {
+        background-color: white !important;
+        p,i {color: #1a1d50;}
+    }
+}
+
+//.totalScrollOffsetInfo{border:2px solid #fc0; font-size:12px; padding:20px; text-align:center; margin-bottom:60px;}
+//.totalScrollOffset{height:50px; background:#fc0;}
+//
+/* include theme UDN - [ OK ] */@state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/

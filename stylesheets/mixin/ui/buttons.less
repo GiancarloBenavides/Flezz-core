@@ -1,0 +1,476 @@
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: Button
+///*  Version: 0.2.7
+///*  Description: description button
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///*  Tags: Button, plugin, css.
+///******************************************/
+///*  	Content
+///*
+///*  1. Config Button variables.
+///*  2. Road map.
+///*  3. Base class.
+///*  4. Config mixin.
+///*  5. preconfigured patterns.
+///*  6. initialize patterns.
+///******************************************/
+///* PATH */
+//
+///* Dependencies */
+@import '../_shared/_shared.less';
+//
+///* 1 *//* CONFIG BUTTON VARIABLES */
+//
+///* global variables */
+///* button general option */
+@button-text-transform: true;
+@button-border-radius: true;
+@button-border-outset: true;
+@button-hover-event: true;
+@button-font-family: @font-regular;
+///* button shape option */
+@button-text-shadow: true;
+@button-degraded: true;
+@button-depth: true;
+///* button length option */
+@button-size: 7;
+@button-line-height: 1; // Normal = 22/16, boostrap = 20/14
+@button-border-width: 1px;
+@button-radius-length: 2px;
+///* button transition event option */
+@button-transition-time: 300ms;
+@button-dark-step: 5;
+//
+///* button color option */
+///* button default color */
+@button-default-font-color: @gray80;
+@button-default-background-color: @default;
+@button-default-border-color: darken(@button-default-background-color, 20%);
+///* button disable color */
+@button-disabled-font-color: @gray60;
+@button-disabled-background-color: @gray10;
+@button-disabled-border-color: darken(@button-disabled-background-color, 20%);
+///* button other color */
+@button-font-color: @white;
+@button-primary-background-color: @primary;
+@button-success-background-color: @success;
+@button-info-background-color: @info;
+@button-warning-background-color: @warning;
+@button-danger-background-color: @danger;
+@button-secundary-background-color: @secundary;
+@button-caution-background-color: @caution;
+@button-alert-background-color: @alert;
+//
+///* local variables */
+.button-local-var() {
+    @dfl-color: @button-default-font-color;
+    @dfl-bck-color: @button-default-background-color;
+    @dfl-border-color: @button-default-border-color;
+    @dfl-pri-color: @button-primary-background-color;
+    @dfl-suc-color: @button-success-background-color;
+    @dfl-inf-color: @button-info-background-color;
+    @dfl-war-color: @button-warning-background-color;
+    @dfl-dan-color: @button-danger-background-color;
+    @dfl-sec-color: @button-secundary-background-color;
+    @dfl-cau-color: @button-caution-background-color;
+    @dfl-ale-color: @button-alert-background-color;
+    @dfl-dark-step: @button-dark-step;
+}
+//
+///* 2 *//* ROAD MAP */
+// --------------------------------------------------
+//button-outset=true;
+
+//
+// --------------------------------------------------
+//
+///* 3 *//* BASE CLASS */
+///* button box color, shape and size */
+.btn-box (@color: @dfl-color; @back-color: @dfl-bck-color; @border-color: @dfl-border-color; @border-width: @button-border-width; @size: @button-size; @border-shape: square; @Skeuomorphs: false; @expanded: false) {
+    .btn-button-box (@color; @button-border-width; @size; @border-shape; @Skeuomorphs; @expanded);
+
+    & > a {
+        .btn-button-color(@back-color; @border-color; @Skeuomorphs);
+    }
+}
+///* button tag box color, shape and size */
+.btn-button-tag(@color: @dfl-color; @border-width: @button-border-width; @size: @button-size) {   
+    font-family: @button-font-family;
+    .btn-background-transition();
+    .btn-text-transform();
+    .btn-button-size(@size; @button-border-width);
+    color: @color;
+    border-style: outset;
+    outline: none;
+    vertical-align: bottom;
+    box-sizing: content-box;
+    margin: 1px;
+    
+    a, a:hover {
+        padding: 0;
+        color: @color;
+        display: block;
+    }
+}
+///* button box shape and size */
+.btn-button-box (@color: @dfl-color; @border-width: @button-border-width; @size: @button-size; @border-shape: square; @Skeuomorphs: false; @expanded: false) {
+    .btn-expanded(@expanded);
+    .user-select();
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    padding: 1px;
+
+    & > a {
+        color: @color;
+        cursor: pointer;
+        .btn-button-link(@size; @border-shape; @Skeuomorphs);
+        .btn-button-size(@size; @button-border-width);
+    }
+}
+///* button shape */
+.btn-button-link(@size: @button-size; @border-shape: square; @Skeuomorphs: false) {
+    font-family: @button-font-family;
+    text-decoration: none;
+    display: block;
+    .btn-background-transition();
+    .btn-text-transform();
+    .btn-border-shape(@size, @border-shape);
+    .btn-box-shadow(@Skeuomorphs);
+
+    &:active {
+        .btn-box-shadow-active(@Skeuomorphs);
+    }
+}
+///* button color */
+.btn-button-color (@back-color: @dfl-bck-color; @border-color: @dfl-border-color; @Skeuomorphs: false) {
+    background-color: @back-color;
+    .btn-text-shadow(@color);
+    .btn-degraded(@back-color);
+    .btn-border-outset(@border-color);
+
+    &:hover {
+        .btn-hover-event();
+    }
+
+    &:active {
+        .btn-degraded-active(@back-color);
+        .btn-border-active(@color, @back-color, @Skeuomorphs);
+    }
+}
+
+.btn-button-size(@size: @button-size; @border-width: @button-border-width) {
+//    @font-base: 1rem * (@size + 6) * 10/100;
+//    @padSup: 1em * (@size + 5) * 6/100;
+//    @padLat: 1em * (@size + 4) * 8/100;
+//    @padding: @padSup @padLat;
+    
+    @font-root: 16;
+    @font-base: (@size + 6) * 10/100;
+    @font-size-rem: 1rem * round(@font-base * @font-root) / @font-root;
+    @font-size-px:   1px * unit(@font-size-rem) * @font-root;
+    //
+    @padSup: 1em * (@size + 1) * 1/10;
+    @padLat: 1em * (@size + 1) * 1/10;
+    //
+    @padding: @padSup @padLat;
+    @box-content: (2*@padSup + 1);
+    @box-border: 2*@button-border-width;
+    @box-height: ~'calc(@{box-content} + @{box-border})';
+    @box-line-height: unit(@box-content);
+    line-height: @box-line-height;
+    height: @box-height;
+    font-size: @font-size-rem;
+    padding: 0 @padLat;
+    border-style: solid;
+    border-width: @border-width;
+}
+//
+///* 4 *//* CONFIG MIXIN */
+.btn-background-transition(@time: @button-transition-time) {
+    -moz-transition: background-color @time ease-out;
+    -o-transition: background-color @time ease-out;
+    -webkit-transition: background-color @time ease-out;
+    transition: background-color @time ease-out;
+}
+
+.btn-border-shape(@size, @shape) when (@shape = square) {
+    @radius: 0;
+    .btn-border-radius(@radius);
+}
+
+.btn-border-shape(@size, @shape) when (@shape = fixed) {
+    @radius: @button-radius-length;
+    .btn-border-radius(@radius);
+}
+
+.btn-border-shape(@size, @shape) when (@shape = radius) {
+    @radius: 1rem * (@size + 3) * 5/100;
+    .btn-border-radius(@radius);
+}
+
+.btn-border-shape(@size, @shape) when (@shape = round) {
+    @radius: 1em * (@size + 3) * 34/100;
+    .btn-border-radius(@radius);
+}
+
+.btn-border-radius(@radius) when (@button-border-radius = true) {
+    border-radius: @radius;
+}
+
+.btn-border-radius-round(@radius) when (@button-border-radius = false) {
+    border-radius: @radius;
+}
+
+.btn-text-transform() when (@button-text-transform = true) {
+    text-transform: capitalize;
+}
+
+.btn-border-outset(@border-color: @dfl-border-color) when (@button-border-outset = true) and (@Skeuomorphs = true) {
+    @light-color: @border-color;
+    @dark-color: darken(@border-color, @dfl-dark-step * 1.5%);
+    border-color: @light-color @dark-color @dark-color @light-color;
+}
+
+.btn-border-outset(@border-color: @dfl-border-color) when (@button-border-outset = false), (@Skeuomorphs = false) {
+    border-color: @border-color;
+}
+
+.btn-border-active(@color, @back-color, @Skeuomorphs) when (@Skeuomorphs = true) {
+    @light-color: darken(@border-color, @dfl-dark-step * 0.5%);
+    @dark-color: darken(@border-color, @dfl-dark-step * 2%);
+    border-color: @dark-color @light-color @light-color @dark-color;
+}
+
+.btn-border-active(@color, @back-color, @Skeuomorphs) when (@Skeuomorphs = false) {
+    border-width: 0;
+    margin: 1px;
+}
+
+.btn-hover-event() when (@button-hover-event = true) {
+    background-color: saturate(darken(@back-color, @dfl-dark-step *1%), @dfl-dark-step *1%);
+    border-color: darken(@border-color, @dfl-dark-step * 1.5%);
+    .btn-degraded-hover(@back-color);
+}
+
+.btn-text-shadow(@text-color) when (@button-text-shadow = true) and (@Skeuomorphs = true) {
+    @shadow-color: contrast(@text-color, fade(black,20%), #ddd);
+    text-shadow: 0 -1px 0 @shadow-color;
+}
+
+.btn-box-shadow(@Skeuomorphs) when (@button-depth = true) and (@Skeuomorphs = true) {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15),1px 2px 2px rgba(0,0,0,.2);
+}
+
+.btn-box-shadow-active(@Skeuomorphs) when (@button-depth = true) and (@Skeuomorphs = true) {
+    box-shadow: inset 0 2px 4px rgba(0,0,0,.125);
+}
+
+.btn-degraded(@opc-bck-color) when (@button-degraded = true) and (@Skeuomorphs = true) {
+    background-image: linear-gradient(rgba(255,255,255,.3) 0, fade(@opc-bck-color, 30%) 100%);
+}
+
+.btn-degraded-hover(@opc-bck-color) when (@button-degraded = true) and (@Skeuomorphs = true) {
+    background-image: linear-gradient(rgba(255,255,255,.3) 0, rgba(0,0,0,.07) 100%);
+}
+
+.btn-degraded-active(@opc-bck-color) when (@button-degraded = true) and (@Skeuomorphs = true) {
+    background-image: linear-gradient(rgba(0,0,0,.07) 0, fade(@opc-bck-color, 25%) 22%, fade(@opc-bck-color, 25%) 78%, rgba(255,255,255,.1) 100%);
+}
+
+.btn-expanded(@expanded) when (@expanded = false) {
+    display: inline-block;
+}
+
+.btn-expanded(@expanded) when (@expanded = true) {
+    display: block;
+}
+//
+///* 5 *//* PRECONFIGURED PATTERNS */
+//
+///* boostrap patterns *///
+.btn-default(@btn-size) {
+    .btn-box(@color: black; @back-color: @dfl-bck-color; @border-color: darken(@dfl-bck-color,10%); @border-width: 1px; @size: @btn-size; @border-shape: radius; @Skeuomorphs: true);
+
+    & > a {
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.15),1px 1px 2px rgba(0,0,0,.2);
+    }
+
+    & > a:active {
+        box-shadow: inset 0 2px 4px rgba(0,0,0,.125);
+    }
+
+    ;
+}
+
+.btn-primary(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-pri-color; @border-color: darken(@dfl-pri-color,7%); @border-width: 1px; @size: @btn-size; @border-shape: radius; @Skeuomorphs: true);
+}
+
+.btn-success(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-suc-color; @border-color: darken(@dfl-suc-color,7%); @border-width: 1px; @size: @btn-size; @border-shape: radius; @Skeuomorphs: true);
+}
+
+.btn-info(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-inf-color; @border-color: darken(@dfl-inf-color,7%); @border-width: 1px; @size: @btn-size; @border-shape: radius; @Skeuomorphs: true);
+}
+
+.btn-warning(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-war-color; @border-color: darken(@dfl-war-color,7%); @border-width: 1px; @size: @btn-size; @border-shape: radius; @Skeuomorphs: true);
+}
+
+.btn-danger(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-dan-color; @border-color: darken(@dfl-dan-color,7%); @border-width: 1px; @size: @btn-size; @border-shape: radius; @Skeuomorphs: true);
+}
+//
+///* Fundation patterns *///
+.button-secondary(@btn-size) {
+    .btn-box(@color: black; @back-color: @dfl-sec-color; @border-color: transparent; @border-width: 1px; @size: @btn-size);
+}
+
+.button-default(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-pri-color; @border-color: transparent; @border-width: 1px; @size: @btn-size);
+}
+
+.button-success(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-suc-color; @border-color: transparent; @border-width: 1px; @size: @btn-size);
+}
+
+.button-info(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-inf-color; @border-color: transparent; @border-width: 1px; @size: @btn-size);
+}
+
+.button-caution(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-cau-color; @border-color: transparent; @border-width: 1px; @size: @btn-size);
+}
+
+.button-alert(@btn-size) {
+    .btn-box(@color: white; @back-color: @dfl-ale-color; @border-color: transparent; @border-width: 1px; @size: @btn-size);
+}
+//
+///* Form patterns *///
+.button-radius(@btn-size; @back-color: @dfl-pri-color) {
+    .btn-box(@color: white; @back-color: @back-color; @border-color: transparent; @border-width: 1px; @size: @btn-size; @border-shape: radius);
+}
+
+.button-round(@btn-size; @back-color: @dfl-pri-color) {
+    .btn-box(@color: white; @back-color: @back-color; @border-color: transparent; @border-width: 1px; @size: @btn-size; @border-shape: round);
+}
+
+.button-square(@btn-size; @back-color: @dfl-pri-color) {
+    .btn-box(@color: white; @back-color: @back-color; @border-color: transparent; @border-width: 1px; @size: @btn-size; @border-shape: square);
+}
+
+.button-expanded(@btn-size; @back-color: @dfl-pri-color) {
+    .btn-box(@color: white; @back-color: @back-color; @border-color: transparent; @border-width: 1px; @size: @btn-size; @border-shape: square; @expanded: true);
+}
+//
+///* state patterns *///
+.button-test-disabled() {
+    button[data-state*="disabled"],
+    div[data-state*="disabled"] > a,
+    div[data-state*="disabled"] > a:hover,
+    div[data-state*="disabled"] > a:active {
+        background-color: #eeeeee !important;
+        color: #919191 !important;
+        cursor: not-allowed !important;
+        border-color: transparent !important;
+        text-shadow: none !important;
+        background-image: none !important;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.15) !important;
+        border-width: 1px !important;
+        margin: 0 !important;
+    }
+}
+//
+///* legacy patterns *///
+.button-legacy() {
+    div[class^=btn],    
+    button[class^=btn] {
+        .btn-box-shadow(true);
+
+        &:active {
+            .btn-box-shadow-active(true);
+            border-style: inset;
+        }
+    }
+}
+//
+///* General patterns *///
+.button-general() {
+    button {
+        .btn-button-tag(@color: white, @size: @button-size);
+    }
+    .button {
+        .btn-button-box(@color: white, @size: @button-size);
+    }
+}
+//
+///* flezz patterns */
+.button-flezz() {   
+    ///* flezz round buttons*///
+    .button-round-primary {
+        .button-round(@button-size; @dfl-pri-color)
+    }
+
+    .button-round-secondary {
+        .button-round(@button-size; @dfl-sec-color)
+    }
+
+    .button-round-success {
+        .button-round(@button-size; @dfl-suc-color)
+    }
+
+    .button-round-danger {
+        .button-round(@button-size; @dfl-dan-color)
+    }
+    ///* flezz default buttons *///
+    .button-primary {
+        .button-square(@button-size; @dfl-pri-color)
+    }
+
+    .button-secondary {
+        .button-square(@button-size; @dfl-sec-color)
+    }
+
+    .button-success {
+        .button-square(@button-size; @dfl-suc-color)
+    }
+
+    .button-danger {
+        .button-square(@button-size; @dfl-dan-color)
+    }
+    ///* flezz expanded buttons *///
+    .button-expanded-primary {
+        .button-expanded(@button-size; @dfl-pri-color)
+    }
+
+    .button-expanded-secondary {
+        .button-expanded(@button-size; @dfl-sec-color)
+    }
+
+    .button-expanded-success {
+        .button-expanded(@button-size; @dfl-suc-color)
+    }
+
+    .button-expanded-danger {
+        .button-expanded(@button-size; @dfl-dan-color)
+    }
+}
+///* 6 *//* INITIALIZE PATTERNS */
+.button-init() {
+    .button-local-var();
+    .button-general();
+    .button-legacy();
+    .button-flezz();
+    .button-test-disabled();
+}
+//
+/* button ------------ [ + ] */@state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/

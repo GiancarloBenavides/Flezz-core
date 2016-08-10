@@ -1,3 +1,15 @@
+# =========================
+# flezz App ignore
+# =========================
+# ignorar todas las carpetas que inician con @
+@*/
+#@*/**/*
+#@*/**
+# ignorar todo el contenido de las carpetas que inician con _app_  _web_ y _test
+_app_*/**/*
+_web_*/**/*
+test_*/**/*
+# =========================
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

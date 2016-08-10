@@ -1,0 +1,207 @@
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: color
+///*  Version: 0.2.8
+///*  Description: Theme colors palette.
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///*  Tags: Color, tiles, css.
+///******************************************/
+///*  	Content
+///*
+///*  1. Gray scale.
+///*  2. Button Default palette.
+///*  3. Social color.
+///*  4. Metro desing (Windows).
+///*  5. Material desing (Android).
+///*  6. Ios desing (Apple).
+///*  7. Zerez desing.
+///*  8. Flezz color theme.
+///******************************************/
+//
+///* Dependencies */
+@import '_shared/_shared.less';
+///* CONFIG COMPONENT VARIABLES *///
+///* global variables */
+@brightness-cutoff: 44%;
+@font-contrast: 40%;
+@font-title-icrement: 10%;
+///* setting options */
+@primary-header-background: @zerez-blue-dark;
+@primary-body-background: @zerez-gray-light;
+@secondary-header-background: @zerez-purple;
+@secondary-body-background:  @zerez-gray-light;
+@footer-background: @zerez-gray;
+@sidebar-background: @zerez-gray;
+//
+///* local variables */
+@color-secundary: @zerez-blue;
+@color-secundary-weight: 10%;
+//
+@color-body-weight: 10%;
+//
+///* local statements */
+//.fontPrimaryColor();
+//.fontSecondaryColor();
+//.fontFooterColor();
+///* ROAD MAP *///
+@theme-darken: true;
+@theme-darken: 0%;
+@theme-opacity: true;
+//
+
+///* 8 */
+///* PRYMARY COLORS *///
+///* header luminoso *///
+.fontPrimaryColor() when (luma(@primary-header-background) >= @brightness-cutoff) {
+    @a: mix(@color-secundary,@primary-header-background,@color-secundary-weight);
+    @c: (@color-body-weight);
+    @p1: darken(@a,@font-contrast);
+    @p2: darken(@p1,@font-title-icrement);
+    @p3: darken(@p1,2*@font-title-icrement);
+    @primary-header-font-color: mix(@primary-body-background,@p1,@c);
+    @primary-header-subtitle-color: mix(@primary-body-background,@p2,@c);
+    @primary-header-title-color: mix(@primary-body-background,@p3,@c);
+}
+///* header oscuro *///
+.fontPrimaryColor() when (luma(@primary-header-background) < @brightness-cutoff) {
+    @a: mix(@color-secundary,@primary-header-background, @color-secundary-weight);
+    @b: @font-contrast/4;
+    @c: (@color-body-weight);
+    @p1: lighten(@a,@b);
+    @p2: lighten(@p1,@font-title-icrement);
+    @p3: lighten(@p1,2*@font-title-icrement);
+    @primary-header-font-color: mix(@primary-body-background,@p1,@c);
+    @primary-header-subtitle-color: mix(@primary-body-background,@p2,@c);
+    @primary-header-title-color: mix(@primary-body-background,@p3,@c);
+}
+///* body luminoso *///
+.fontPrimaryColor() when (luma(@primary-body-background) >= @brightness-cutoff) {
+    @a: mix(@color-secundary,@primary-body-background,@color-secundary-weight);
+    @b: @font-contrast*1.4;
+    @primary-body-font-color: darken(@a,@b);
+    @primary-body-subtitle-color: darken(@primary-body-font-color,@font-title-icrement);    
+    @primary-body-title-color: darken(@primary-body-font-color,2*@font-title-icrement);
+}
+///* body oscuro *///
+.fontPrimaryColor() when (luma(@primary-body-background) < @brightness-cutoff) {
+    @a: mix(@color-secundary,@primary-body-background,@color-secundary-weight);
+    @b: @font-contrast*1.6;
+    @primary-body-font-color: lighten(@a,@b);
+    @primary-body-subtitle-color: lighten(@primary-body-font-color,@font-title-icrement);   
+    @primary-body-title-color: lighten(@primary-body-font-color,2*@font-title-icrement);
+}
+//
+///* SECONDARY COLORS */// - // mix [100-0]
+///* header luminoso *///
+.fontSecondaryColor() when (luma(@secondary-header-background) >= @brightness-cutoff) {
+    @a: mix(@color-secundary,@secondary-header-background,@color-secundary-weight/4);
+    @b: mix(@secondary-body-background,@a,@color-body-weight/4);
+    @c: darken(@b,@font-contrast/1.5);
+    @secondary-header-font-color: @c;
+    @secondary-header-subtitle-color: darken(@c,@font-title-icrement);    
+    @secondary-header-title-color: darken(@c,2*@font-title-icrement);
+}
+///* header oscuro *///
+.fontSecondaryColor() when (luma(@secondary-header-background) < @brightness-cutoff) {
+    @a: mix(@color-secundary,@secondary-header-background,@color-secundary-weight/3);
+    @b: mix(@secondary-body-background,@a,@color-body-weight/3);
+    @c: lighten(@b,@font-contrast*1.9);
+    @secondary-header-font-color: @c;
+    @secondary-header-subtitle-color: lighten(@c,@font-title-icrement);
+    @secondary-header-title-color: lighten(@c,(2*@font-title-icrement));
+}
+///* body luminoso *///
+.fontSecondaryColor() when (luma(@secondary-body-background) >= @brightness-cutoff) {
+    @a: mix(@color-secundary,@secondary-body-background,@color-secundary-weight/3);
+    @b: mix(@primary-body-background,@a,@color-body-weight/3);
+    @c: darken(@b,@font-contrast/1.4);
+    @secondary-body-font-color: @c;
+    @secondary-body-subtitle-color: darken(@c,@font-title-icrement);   
+    @secondary-body-title-color: darken(@c,(2*@font-title-icrement)); 
+}
+///* body oscuro *///
+.fontSecondaryColor() when (luma(@secondary-body-background) < @brightness-cutoff) {
+    @a: mix(@color-secundary,@secondary-body-background,@color-secundary-weight/3);
+    @b: mix(@primary-body-background,@a,@color-body-weight/3);
+    @c: darken(@b,@font-contrast/1.4);
+    @secondary-body-font-color: @c;
+    @secondary-body-subtitle-color: lighten(@c,@font-title-icrement);   
+    @secondary-body-title-color: lighten(@c,(2*@font-title-icrement));
+}
+//
+///* FOOTER COLORS *///
+///* footer luminoso *///
+.fontFooterColor() when (luma(@footer-background) >= @brightness-cutoff) {
+    @a: mix(@color-secundary,@footer-background,@color-secundary-weight);
+    @footer-font-color: darken(@a,@font-contrast);
+    @footer-subtitle-color: darken(@footer-font-color,@font-title-icrement);   
+    @footer-title-color: darken(@footer-font-color,(2*@font-title-icrement));
+}
+///* footer oscuro *///
+.fontFooterColor() when (luma(@footer-background) < @brightness-cutoff) {
+    @a: mix(@color-secundary,@footer-background,@color-secundary-weight);
+    @b: @font-contrast/4;
+    @footer-font-color: lighten(@a,@b);
+    @footer-subtitle-color: lighten(@footer-font-color,@font-title-icrement);   
+    @footer-title-color: lighten(@footer-font-color,(2*@font-title-icrement));
+}
+///* 3 *//* BASE MODULES */
+
+//
+///* 4 *//* CONFIG MIXIN */
+
+//
+///* 5 *//* PRECONFIGURED PATTERNS */
+.font-color(){
+    .fontPrimaryColor();
+    .fontSecondaryColor();
+    .fontFooterColor();   
+}
+
+.tiles-global-color(){
+    a[class~="tl-white"] {background-color: @white;}
+    a[class~="tl-black"] {background-color: @black;}
+    a[class~="tl-blue"], a[class~="accent"] {background-color: @tile-blue;}
+    a[class~="tl-brown"] {background-color: @tile-brown;}
+    a[class~="tl-green"] {background-color: @tile-green;}
+    a[class~="tl-lime"] {background-color: @tile-lime;}
+    a[class~="tl-magenta"] {background-color: @tile-magenta;}
+    a[class~="tl-orange"] {background-color: @tile-orange;}
+    a[class~="tl-pink"] {background-color: @tile-pink;}
+    a[class~="tl-purple"] {background-color: @tile-purple;}
+    a[class~="tl-red"] {background-color: @tile-red;}
+    a[class~="tl-teal"] {background-color: @tile-teal;}
+    a[class*="tl-"]:hover {background-color: @zerez-blue-dark;}
+}
+
+.button-global-color(){
+    @dark-percent: 7%;
+    a[class~="bt-primary"], button[class*="primary"]  {background-color: @primary; border-color: @primary}
+    a[class~="bt-primary"]:hover, button[class*="primary"]:hover {background-color: darken(@primary, @dark-percent);}
+    a[class~="bt-success"], button[class*="success"] {background-color: @success; border-color: @success}
+    a[class~="bt-success"]:hover, button[class*="success"]:hover {background-color: darken(@success, @dark-percent);}
+    a[class~="bt-info"], button[class*="info"] {background-color: @info; border-color: @info}
+    a[class~="bt-info"]:hover, button[class*="info"]:hover {background-color: darken(@info, @dark-percent);}
+    a[class~="bt-warning"], button[class*="warning"] {background-color: @warning; border-color: @warning}
+    a[class~="bt-warning"]:hover, button[class*="warning"]:hover {background-color: darken(@warning, @dark-percent);}
+    a[class~="bt-danger"], button[class*="danger"] {background-color: @danger; border-color: @danger}
+    a[class~="bt-danger"]:hover, button[class*="danger"]:hover {background-color: darken(@danger, @dark-percent);}
+}
+//
+///* 6 *//* INITIALIZED PATTERNS */
+//
+///* Shorthand - Initialize Color *///
+.flezz-color-init() {
+    .font-color();
+    .tiles-global-color();
+    .button-global-color();
+}
+//
+/* add flezz color -- [ OK ] */@state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/

@@ -1,0 +1,232 @@
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: mixin desing
+///*  Version: 0.2.7
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///******************************************/
+//
+.arrow-selected(@bck-color: #ffffff; @border-color: #cccccc; @height: 9px; @arrow-down: 0; @border-width: 1px;) {
+    & > a {
+        position: relative;
+
+        &:after,
+        &:before {
+            border: @height solid transparent;
+            border-style: outset outset solid outset;
+            border-bottom-color: @border-color;
+            bottom: -1*@arrow-down;
+            content: "";
+            height: 0;
+            left: 50%;
+            margin-left: -1*@height;
+            overflow: hidden;
+            position: absolute;
+            width: 0;
+            z-index: 10;
+        }
+
+        &:after {
+            background: transparent;
+            border-bottom-color: @bck-color;
+            bottom: -1*(@border-width + @arrow-down);
+            z-index: 1000;
+        }
+    }
+}
+//
+.arrow(@side; @place; @height: 9px; @border-width: 2px; @offset: 0;@back-color: yellow; @border-color: red;) {
+    position: relative;
+    //z-index: 100;
+    &:after,
+    &:before {
+        border: @height solid transparent;
+        position: absolute;
+        content: "";
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        .arrow-plane(@side, @height, @border-width);
+    }
+
+    &:after {
+        z-index: 1000;
+        .arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset);
+    }
+
+    &:before {
+        z-index: 10;
+        .arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset);
+    }
+}
+///******************************************/
+///* POSITION PLANE */
+///******************************************/
+///* vertical */
+.arrow-plane(@side, @height, @border-width) when (@side = up), (@side = down) {
+    left: 50%;
+    margin-left: -1*@height;
+}
+///* horizontal */
+.arrow-plane(@side, @height, @border-width) when (@side = left), (@side = right) {
+    top: 50%;
+    margin-top: -1*@height;
+}
+///* top */
+.arrow-plane(@side, @height, @border-width) when (@side = top-left), (@side = top-right) {
+    top: -1*@border-width;
+    border-top-width: 0;
+}
+///******************************************/
+///*           ARROW ATTACHED */
+///******************************************/
+///*         arrow pointing outside
+///******************************************/
+///* top border */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = up) and (@place = attached) {
+    bottom: ~'calc(100% - @{border-width})';
+    border-bottom-color: @back-color;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = up) and (@place = attached) {
+    bottom: 100%;
+    border-bottom-color: @border-color;
+}
+///* bottom border */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = down) and (@place = attached) {
+    top: ~'calc(100% - @{border-width})';
+    border-top-color: @back-color;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = down) and (@place = attached) {
+    top: 100%;
+    border-top-color: @border-color;
+}
+///* left border */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = left) and (@place = attached) {
+    right: ~'calc(100% - @{border-width})';
+    border-right-color: @back-color;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = left) and (@place = attached) {
+    right: 100%;
+    border-right-color: @border-color;
+}
+///* right border */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = right) and (@place = attached) {
+    left: ~'calc(100% - @{border-width})';
+    border-left-color: @back-color;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = right) and (@place = attached) {
+    left: 100%;
+    border-left-color: @border-color;
+}
+///* upper left corner */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = top-left) and (@place = attached) {
+    right: ~'calc(100% - 2*@{border-width})';
+    border-right-color: @back-color;
+    top: 0;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = top-left) and (@place = attached) {
+    right: 100%;
+    border-right-color: @border-color;
+}
+///* upper right corner */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = top-right) and (@place = attached) {
+    left: ~'calc(100% - 2*@{border-width})';
+    border-left-color: @back-color;
+    top: 0;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = top-right) and (@place = attached) {
+    left: 100%;
+    border-left-color: @border-color;
+}
+///******************************************/
+///*           ARROW DETACHED */
+///******************************************/
+///*         arrow pointing inside
+///******************************************/
+///* top border */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = up) and (@place = detached) {
+    @gap: -1*@offset;
+    bottom: ~'calc(100% - @{gap})';
+    border-top-color: @back-color;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = up) and (@place = detached) {
+    @gap: @border-width - @offset;
+    bottom: ~'calc(100% - @{gap})';
+    border-top-color: @border-color;
+}
+///* bottom border */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = down) and (@place = detached) {
+    @gap: -1*@offset;
+    top: ~'calc(100% - @{gap})';
+    border-bottom-color: @back-color;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = down) and (@place = detached) {
+    @gap: @border-width - @offset;
+    top: ~'calc(100% - @{gap})';
+    border-bottom-color: @border-color;
+}
+///* left border */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = left) and (@place = detached) {
+    @gap: -1*@offset;
+    right: ~'calc(100% - @{gap})';
+    border-left-color: @back-color;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = left) and (@place = detached) {
+    @gap: @border-width - @offset;
+    right: ~'calc(100% - @{gap})';
+    border-left-color: @border-color;
+}
+///* right border */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = right) and (@place = detached) {
+    @gap: -1*@offset;
+    left: ~'calc(100% - @{gap})';
+    border-right-color: @back-color;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = right) and (@place = detached) {
+    @gap: @border-width - @offset;
+    left: ~'calc(100% - @{gap})';
+    border-right-color: @border-color;
+}
+///* upper left corner */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = top-left) and (@place = detached) {
+    @gap: -1*@offset;
+    right: ~'calc(100% - @{gap})';
+    border-left-color: @back-color;
+    top: 0;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = top-left) and (@place = detached) {
+    @gap: 2*@border-width - @offset;
+    right: ~'calc(100% - @{gap})';
+    border-left-color: @border-color;
+}
+///* upper right corner */
+.arrow-side-after(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = top-right) and (@place = detached) {
+    @gap: -1*@offset;
+    left: ~'calc(100% - @{gap})';
+    border-right-color: @back-color;
+    top: 0;
+}
+
+.arrow-side-before(@side, @place, @back-color, @border-color, @border-width,  @offset) when (@side = top-right) and (@place = detached) {
+    @gap: 2*@border-width - @offset;
+    left: ~'calc(100% - @{gap})';
+    border-right-color: @border-color;
+}
+/* arrow ------------- [ + ] */@state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/

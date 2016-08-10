@@ -1,0 +1,41 @@
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: mixin desing
+///*  Version: 0.1.0
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///******************************************/
+@base: 10;
+
+.fnt-padding(@opc-size: 4) {
+    @fontBase: 1rem * (@opc-size + 6) * 1/10;
+    @padSup: @fontBase * (@opc-size + 3) * 1/20;
+    @padLat: 1rem * (@opc-size + 1) * 15/100;
+    @fnt-padding: @padSup @padLat;
+}
+// pixel to rem sizes
+@function-rem: ~ `eval('rem=function(pixel){return Math.round(1000*Number(pixel.split("px")[0])/"@{base}")/1000+"rem";};')`;
+// pixel to em sizes
+@function-em: ~ `eval('em=function(pixel, base){return Math.round(1000*Number(pixel.split("px")[0])/Number(base.split("px")[0]))/1000+"em";};')`;
+// if statement
+.if(@condition; @property; @value) when (@condition = true) {
+    @{property}: @value;
+}
+// properties size in rem unit
+.px-to-rem(@property; @sizeValue; @both: false;) {
+    @pxValue: unit(@sizeValue);
+    @remValue: (@pxValue / @base);
+    .if (@both; @property; ~"@{pxValue}px");
+    @{property}: ~"@{remValue}rem";
+}
+
+.hello{
+    .px-to-rem(font-size; 10px; true)
+}
+/* function ---------- [ + ] */@state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/

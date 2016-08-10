@@ -1,0 +1,43 @@
+///* 1 *//* CONFIG MODULES VARIABLES *///
+//
+///* general option */
+@link-bar-decoration: true;
+@header-fixed: true;
+@header-height: 50px;
+//
+///* local variables */
+//
+@overflow-vertical: true;
+@font-size-init: 14px;
+@link-bar-decoration: true;
+@header-fixed: true;
+@header-height: 50px;
+///* 2 *//* ROAD MAP */
+// --------------------------------------------------
+
+// --------------------------------------------------
+//
+///* 3 *//* STATEMENTS *///
+.dsn-fixed() when (@header-fixed = true) {
+    .header-f() {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .body-f() {
+        padding-top: @header-height;
+    }
+}
+//
+///* 4 *//* CONFIG MIXIN */
+
+///* 5 *//* PRECONFIGURED PATTERNS */
+
+//
+///* 6 *//* INITIALIZED PATTERNS */
+.design-init() {
+    .normalize();
+    .desing-start-init();
+}
+//
