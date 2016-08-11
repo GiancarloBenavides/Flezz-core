@@ -1,59 +1,32 @@
 ///******************************************/
 ///*          flezz framework 1.0           */
 ///******************************************/
-///*  Name: mixin desing
-///*  Version: 0.1.0
-///*  Description: less and css desing element.
+///*  Name: scroll
+///*  Version: 0.2.7
+///*  Description: mini scroll plugin.
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
 ///*  License: GNU General Public License v2 or later
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ///*  Tags: mixin, plugin, css.
 ///******************************************/
+///*  Requiere: jquery.flezz.scroll.js
+///******************************************/
 ///*  	Content
 ///*
-///*  1. Config modules.
+///*  1. Local variables.
 ///*  2. Road map.
-///*  3. Base Modules.
+///*  3. Base component.
 ///*  4. Config mixin.
-///*  5. preconfigured patterns.
-///*  6. initialized patterns.
+///*  5. Preconfigured patterns.
+///*  6. Initialized patterns.
 ///******************************************/
 ///* PATH */
 //
 ///* Dependencies */
 @import '../_shared/_shared.less';
 //
-///* 1 *//* CONFIG MODULES VARIABLES *///
-//
-///* global variables */
-///* general option */
-@desing-select: false;
-@desing-list-reset: true;
-@desing-link-reset: true;
-@desing-form-reset: true;
-
-@desing-font-size-inerit: true; //rem browser = true or rem fixed = false
-@desing-color-inverted: true;
-@desing-scroll-style: flezz;
-//
-@desing-font-size-init: 18; // when @desing-font-size-inerit = false
-@desing-font-body-family: @OpenSansLight;
-@desing-font-header-family: @OpenSansRegular;
-///* Flezz Scroll - CAUTION: include JS */
-@scroll-margin: true;
-@scroll-bar-zoom: true;
-//
-@scroll-class: ~'flezz-scroll';
-@scroll-contentClass: ~'scroll-content';
-@scroll-paneClass: ~'scroll-bar';
-@scroll-sliderClass: ~'scroll-slider';
-//
-@scroll-content-padding: 20px;
-@scroll-bar-width: 7px;
-@scroll-bar-min-width: 4px;
-//
-///* local variables */
+///* 1 *//* LOCAL VARIABLES *///
 .start-local-var() {
     @dfl-size10: @desing-font-size-init*62.5;
     @scroll-bar-margin-right: (@scroll-content-padding - @scroll-bar-width)/2;
@@ -65,107 +38,6 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE MODULES */
-.up-html() {
-    height: 100%;
-    font-family: @desing-font-body-family;
-    font-size: @small-font;
-    line-height: @small-font;
-    -webkit-font-smoothing: antialiased;
-    -moz-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
-
-.up-body() {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    z-index: 1;
-    .dsn-color();
-    .dsn-body-font();
-    .dsn-overflow();
-    .dsn-select();
-    .px-to-rem(font-size; 16px);
-    text-rendering: optimizeLegibility;
-}
-
-.up-conteiner(){
-
-
-}
-//
-///* 4 *//* CONFIG MIXIN */
-.dsn-color() when (@desing-color-inverted = true) {
-    .fontPrimaryColor();
-    background-color: @primary-body-font-color;
-    color: @primary-body-background;
-}
-
-.dsn-color() when (@desing-color-inverted = false) {
-    .fontPrimaryColor();
-    background-color: @primary-body-background;
-    color: @primary-body-font-color;
-}
-
-.dsn-font() when not (@desing-font-size-inerit = true) {
-    font-size: 20px;
-}
-
-.dsn-body-font() when not (@desing-font-size-inerit = true) {
-    @size: (@desing-font-size-init/20);
-    font-size: @size*1rem;
-}
-
-.dsn-body-font() when (@desing-font-size-inerit = true) {
-    font-size: 1em;
-}
-
-.dsn-overflow() when (@overflow-vertical = true) {
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-.dsn-overflow() when (@overflow-vertical = false) {
-    overflow: hidden;
-}
-
-.dsn-select() when (@desing-select = false) {
-    .user-select();
-}
-
-.dsn-list() when (@desing-list-reset = true) {
-    ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-
-        li {
-            margin: 0;
-            padding: 0;
-        }
-    }
-}
-
-.dsn-link() when (@desing-link-reset = true) {
-    a {
-        color: @facebook-blue;
-        text-decoration: none;
-
-        &:hover {
-            outline: 0;
-            color: @twitter-LinK;
-        }
-    }
-}
-
-.dsn-form() when (@desing-form-reset = true) {
-    input {
-        outline: 0;
-    }
-}
-
 .dsn-scroll() when (@desing-scroll-style = chrome) {
     ::-webkit-scrollbar {
         width: 4px;
@@ -272,7 +144,8 @@
         }
     }
 }
-
+//
+///* 4 *//* CONFIG MIXIN */
 .dsn-scroll-bar-margin(@opc-align) when (@opc-align = 'right') {
     margin: 10px 0 10px @scroll-bar-margin-right*2;
 }
@@ -288,18 +161,6 @@
 }
 //
 ///* 5 *//* PRECONFIGURED PATTERNS */
-.html() {
-    html {
-        .up-html();
-    }
-}
-
-.body() {
-    body {
-        .up-body();
-    }
-}
-
 .desing-scroll() {
     .dsn-scroll();
 }
@@ -307,16 +168,10 @@
 ///* 6 *//* INITIALIZED PATTERNS */
 .desing-start-init() {
     .start-local-var();
-    .html();
-    .body();
-    .dsn-list();
-    .dsn-link();
-    .dsn-form();
     .desing-scroll();
 }
 //
-/* dsn start -------- [ OK ] */
-@state: OK;
+/* dsn start -------- [ OK ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

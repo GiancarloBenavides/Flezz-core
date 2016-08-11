@@ -1,0 +1,79 @@
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: header
+///*  Version: 0.2.7
+///*  Description: description header
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///*  Tags: header, mixin, plugin, css.
+///******************************************/
+///*  Requiere: none.
+///******************************************/
+///*  	Content
+///*
+///*  1. Local variables.
+///*  2. Road map.
+///*  3. Base component.
+///*  4. Config mixin.
+///*  5. Preconfigured patterns.
+///*  6. Initialized patterns.
+///******************************************/
+///* PATH */
+//
+///* Dependencies */
+@import '../_shared/_shared.less';
+//
+///* 1 *//* LOCAL VARIABLES *///
+.header-local-var(){
+    @overflow-vertical: true;
+    @font-size-init: 14px;
+    @link-bar-decoration: true;
+    @header-fixed: true;
+    @header-height: 50px;
+
+}
+///* 2 *//* ROAD MAP */
+// --------------------------------------------------
+@link-bar-decoration: true;
+@header-fixed: true;
+@header-height: 50px;
+// --------------------------------------------------
+//
+///* 3 *//* BASE COMPONENT */
+.dsn-fixed() when (@header-fixed = true) {
+    .header-f() {
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .body-f() {
+        padding-top: @header-height;
+    }
+}
+.dsn-form() when (@desing-form-reset = true) {
+    input {
+        outline: 0;
+    }
+}
+
+//
+///* 4 *//* CONFIG MIXIN */
+
+//
+///* 5 *//* PRECONFIGURED PATTERNS */
+
+//
+///* 6 *//* INITIALIZED PATTERNS */
+.header-init(){
+    .header-local-var();
+    
+}
+//
+/* cmp header -- [ OK ] */@state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/

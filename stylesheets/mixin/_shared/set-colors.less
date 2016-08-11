@@ -19,12 +19,14 @@
 ///*  7. Material desing (Android).
 ///*  8. Ios desing (Apple).
 ///*  9. Social color.
+///* 10. Calculating colors.
 ///******************************************/
 ///* 1 */
 //* main colors *//
 @dark-background:           rgb(0,32,68);        //dark body color
 @dark-panel-background:     rgb(247,247,247);    //light panel color
-@dark-select-color:         rgb(0,143,206);      //contrast color  
+@dark-select-color:         rgb(0,143,206);      //contrast color
+@link-color:                @twitter-LinK;       //link-hover     
 //* transparencies colors *//
 @header-transparent:        50%;   //50% black for background main header
 @dark-color-percent:        70%;   //70% white for font body color
@@ -40,32 +42,6 @@
 @hover-light-percent:     30%;   //30% button color
 @focus-light-percent:     35%;   //35% button color
 @active-light-percent:    45%;   //45% button color
-//
-@dark-header-color:   fade(saturate(spin(@dark-background, -10), 10%), @header-transparent);
-@dark-nav-color:      fade(black, @header-transparent); //rgba(18, 25, 41, 1.7);
-@dark-color:          fade(white, @dark-color-percent);
-@dark-panel-color:    fade(black, @dark-panel-color-percent);
-@secondary-light:     fade(white, @secondary-light-percent);
-@hover-light:         fade(white, @hover-light-percent);
-@focus-light:         fade(white, @focus-light-percent);
-@active-light:        fade(white, @active-light-percent);
-//* light theme *//
-@light-background:         darken(@dark-panel-background, 10%);
-@light-panel-background:   @dark-panel-background;
-@light-select-color:       @dark-background;
-@light-header-color:       @dark-select-color;
-@light-nav-color:           fade(black, @header-transparent);
-@light-color:              @dark-panel-color-percent;
-@light-panel-color:        @dark-color-percent;
-@secondary-dark:           fade(white, (@secondary-light-percent / 3));    // 7% Body color 
-@hover-dark-percent:       fade(white, (@hover-light-percent / 2));        //14% Body color
-@focus-dark-percent:       fade(white, (@focus-light-percent / 2));        //20% Body color
-@active-dark-percent:      fade(white, (@active-light-percent / 2));       //30% Body color
-//* border color *//
-@border-darken:  rgba(0,0,0,0.24);
-@border-lighten: rgba(255,255,255,0.9);
-@shadow-darken:  rgba(0,0,0,0.12);
-@shadow-lighten: rgba(255,255,255,0.1);
 //
 ///* 2 */
 @zerez-yellow: rgb(255,255,18);
@@ -149,6 +125,38 @@
 @google-red: rgb(211,72,54);
 @google-gray: rgb(210,210,210);
 @google-gray-light: rgb(241,241,241);
+//
+///* 10 */
+//* dark theme *//
+@dark-header-color:   fade(saturate(spin(@dark-background, -10), 10%), @header-transparent);
+@dark-nav-color:      fade(black, @header-transparent); //rgba(18, 25, 41, 1.7);
+@dark-color:          fade(white, @dark-color-percent);
+@dark-panel-color:    fade(black, @dark-panel-color-percent);
+@secondary-light:     fade(white, @secondary-light-percent);
+@hover-light:         fade(white, @hover-light-percent);
+@focus-light:         fade(white, @focus-light-percent);
+@active-light:        fade(white, @active-light-percent);
+//* light theme *//
+@light-background:         darken(@dark-panel-background, 10%);
+@light-panel-background:   @dark-panel-background;
+@light-select-color:       @dark-background;
+@light-header-color:       @dark-select-color;
+@light-nav-color:          fade(black, @header-transparent);
+@light-color:              @dark-panel-color-percent;
+@light-panel-color:        @dark-color-percent;
+@secondary-dark:           fade(white, (@secondary-light-percent / 3));    // 7% Body color 
+@hover-dark-percent:       fade(white, (@hover-light-percent / 2));        //14% Body color
+@focus-dark-percent:       fade(white, (@focus-light-percent / 2));        //20% Body color
+@active-dark-percent:      fade(white, (@active-light-percent / 2));       //30% Body color
+//* border color *//
+@border-darken:  rgba(0,0,0,0.24);
+@shadow-darken:  rgba(255,255,255,0.12);
+//
+@border-lighten: rgba(0,0,0,0.07);
+@shadow-lighten: rgba(255,255,255,0.12);
+//* link color *//
+@dark-link:  darken(@link-color, 7%);
+@light-link: darken(@link-color, -7%);
 //
 ///******************************************/
 ///*  	FIN
