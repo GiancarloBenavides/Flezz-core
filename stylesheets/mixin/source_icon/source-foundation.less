@@ -28,6 +28,7 @@
 ///* 1 *//* CONFIG ICON VARIABLES */
 //
 ///* Version */
+@fu-family: 'Foundation';
 @fu-name: foundation-icons;
 @fu-version: "3.0";
 //
@@ -48,12 +49,21 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE CLASS */
-
+.scr-class(@font) when (@font = foundation) and (@icon-class-reference = true) {
+    @foundation-prefix:  @icon-general-prefix;
+    i[class^='@{foundation-prefix}']{font-family: @fu-family;}
+    .scr-fdt-class(@foundation-prefix);
+}
+//
+.scr-class(@font, @prefix) when (@font = foundation) and (@icon-class-reference = true) {
+    @foundation-prefix:  ~'@{icon-general-prefix}-@{prefix}';
+    i[class^='@{foundation-prefix}']{font-family: @fu-family;}
+    .scr-fdt-class(@foundation-prefix);
+}
 //
 ///* 4 *//* CONFIG MIXIN */
 ///* Individual inline iconos  *///
-.icn-class(@prefix, @font) when (@font = foundation) and (@icon-class-reference = true) {
-    @foundation-prefix:  ~'@{icon-prefix}-@{prefix}';
+.scr-fdt-class(@foundation-prefix){
     .@{foundation-prefix}-address-book:before { content: "\f100";}
     .@{foundation-prefix}-alert:before { content: "\f101";}
     .@{foundation-prefix}-align-center:before { content: "\f102";}
@@ -339,7 +349,96 @@
     .@{foundation-prefix}-zoom-out:before { content: "\f21a";}
 }
 //
-/* fundation --------- [ + ] */@state: OK;
+///* Estilos globales de zerezIcon */
+.scr-foundation-icon() when (@icon-foundation = true ) and (@icon-class-reference = true) {
+    .zlin,
+    .zone,
+    .zmid,
+    .zsup,
+    .zsub {
+    }
+
+    [class*="zi-"],
+    [class*="zi-"]:before {
+        font-family: 'Foundation';
+        font-weight: normal;
+        font-style: normal;
+        text-decoration: none;
+        vertical-align: baseline;
+        color: white;
+        padding: 0 2px;
+    }
+
+    [class*="zi-"] {
+        width: auto;
+        height: auto;
+        background-image: none;
+        background-position: 0 0;
+        background-repeat: repeat;
+    }
+    ///* Tamaños de zerezIcon */
+    ///* En Linea */
+    .zlin:before {
+        font-size: 2em;
+        line-height: 2em;
+        padding: 0 0.2em;
+        vertical-align: middle;
+    }
+    ///* En Bloque */
+    ///* Bloque Pequeño */
+    .zmid {
+        font-size: 1em;
+        display: block;
+        margin: auto;
+        text-align: center;
+    }
+
+    .zmid:before {
+        font-size: 2.5em;
+        line-height: 1;
+        display: inline-block;
+        padding: 0 0.1em;
+        margin: auto;
+        vertical-align: middle;
+    }
+    ///* Bloque Grande */
+    .zone {
+        font-size: 1em;
+        display: block;
+        margin: auto;
+        text-align: center;
+    }
+
+    .zone:before {
+        font-size: 6.5em;
+        line-height: 1;
+        display: inline-block;
+        padding: 0 0.1em;
+        margin: auto;
+        vertical-align: middle;
+    }
+    ///* Otros Estilos*/
+    .zsup,
+    .ztxt,
+    .zsub {
+        font-size: 2em;
+        position: static;
+        display: inline-block;
+    }
+
+    .zsub {
+        vertical-align: bottom;
+    }
+
+    .ztxt {
+        vertical-align: middle;
+    }
+
+    .zsup {
+        vertical-align: super;
+    }
+}
+/* def fundation ----- [ + ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

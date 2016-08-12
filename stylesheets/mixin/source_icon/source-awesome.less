@@ -28,6 +28,7 @@
 ///* 1 *//* CONFIG ICON VARIABLES */
 //
 ///* Version */
+@fa-family: 'Awesome';
 @fa-name: fontawesome;
 @fa-version: '4.6.3';
 //
@@ -781,12 +782,22 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE CLASS */
+.scr-class(@font) when (@font = awesome) and (@icon-class-reference = true) {
+     @fa-css-prefix: @icon-general-prefix;  
+    i[class^='@{fa-css-prefix}']{font-family: @fa-family;}
+    .scr-aws-class(@fa-css-prefix);
+}
 
+//
+.scr-class(@font, @prefix) when (@font = awesome) and (@icon-class-reference = true) {
+     @fa-css-prefix: ~'@{icon-general-prefix}-@{prefix}';
+    i[class^='@{fa-css-prefix}']{font-family: @fa-family;}
+    .scr-aws-class(@fa-css-prefix);
+}
 //
 ///* 4 *//* CONFIG MIXIN */
 ///* Individual inline iconos  *///
-.icn-class(@prefix, @font) when (@font = awesome) and (@icon-class-reference = true) {
-     @fa-css-prefix: ~'@{icon-prefix}-@{prefix}';
+.scr-aws-class(@fa-css-prefix){
     .@{fa-css-prefix}-glass:before { content: @fa-var-glass; }
     .@{fa-css-prefix}-music:before { content: @fa-var-music; }
     .@{fa-css-prefix}-search:before { content: @fa-var-search; }
@@ -1519,7 +1530,7 @@
     .@{fa-css-prefix}-font-awesome:before { content: @fa-var-font-awesome; }
 }
 //
-/* awesome ----------- [ + ] */@state: OK;
+/* def awesome ------- [ + ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

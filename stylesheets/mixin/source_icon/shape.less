@@ -1,0 +1,170 @@
+
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: icon
+///*  Version: 0.2.8
+///*  Description: description icon
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///*  Tags: icon, mixin, plugin, css.
+///******************************************/
+///*  Requiere: none.
+///******************************************/
+///*  	Content
+///*
+///*  1. Local variables.
+///*  2. Road map.
+///*  3. Base component.
+///*  4. Config mixin.
+///*  5. Preconfigured patterns.
+///*  6. Initialized patterns.
+///******************************************/
+//
+///* Dependencies */
+@import '../_shared/_shared.less';
+//
+///* 1 *//* LOCAL VARIABLES *///
+.shape-local-var(){
+    @dfl-family:        @icon-default-font;
+    @dfl-color:         @icon-default-color;
+    @dfl-bck:           @icon-default-background-color;
+    @dfl-border:        @icon-default-border-color;
+    @dfl-size:          @icon-default-size;
+}
+///* 2 *//* ROAD MAP */
+// --------------------------------------------------
+
+// --------------------------------------------------
+//
+///* 3 *//* BASE COMPONENT */
+.shp-icon(@color; @bck-color; @border-color; @size; @inline: true; @shape: none; @float: none) {
+    .shp-display(@inline);
+    .shp-float(@float);
+    width: 1em;
+    .shp-size(@size);
+    text-align: center;
+    .shp-font-family(@font-family);
+    text-decoration: none;
+    font-variant: normal;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    text-rendering: auto;       // optimizelegibility throws things off #1094
+    -webkit-font-smoothing: antialiased;
+    //-moz-osx-font-smoothing: grayscale;
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0); // ensures no half-pixel rendering in firefox
+    .shp-shape(@bck-color, @border-color, @shape);
+    .shp-color(@color);
+}
+//
+///* 4 *//* CONFIG MIXIN */
+.shp-font-family(@font-family) when (@icon-multiple-sources = false) {
+    font-family: @font-family;
+}
+
+.shp-display(@opc-inline) when (@opc-inline = true) {
+    display: inline-block;
+    .shp-font();
+}
+
+.shp-display(@opc-inline) when (@opc-inline = false) {
+    display: block;
+}
+
+.shp-font() when (@icon-default-font = 'glyphicon') {
+    position: relative;
+    top: 1px;
+}
+
+.shp-shape(@opc-bck-color, @opc-border-color, @opc-shape) when (@opc-shape = square) {
+    padding: .4em;
+    background-color: @opc-bck-color;
+    border: 0.08em solid @opc-border-color;
+    border-radius: 0;
+}
+
+.shp-shape(@opc-bck-color, @opc-border-color, @opc-shape) when (@opc-shape = radius) {
+    padding: .4em;
+    background-color: @opc-bck-color;
+    border: 0.08em solid @opc-border-color;
+    border-radius: .2em;
+}
+
+.shp-shape(@opc-bck-color, @opc-border-color, @opc-shape) when (@opc-shape = circle) {
+    padding: .4em;
+    margin: 5px;
+    background-color: @opc-bck-color;
+    border: .15em solid @opc-border-color;
+    border-radius: 2em;
+    box-shadow: 0 0 0 1px #000;
+}
+
+.shp-float(@opc-float) when (@opc-float= left) {
+    float: left;
+    margin: .2em .2em 0 0;
+}
+
+.shp-float(@opc-float) when (@opc-float= right) {
+    float: right;
+    margin: .2em 0 0 .2em;
+}
+
+.shp-size(@opc-size) when not (@opc-size = inerit) {
+    font-size: @opc-size*1em;
+}
+
+.shp-color(@opc-color) when not (@opc-color = inerit) {
+    color: @opc-color;
+}
+//
+///* 5 *//* PRECONFIGURED PATTERNS */
+.shp-inline(@opc-color: @icon-default-color; @opc-icon-var: @icon-user) {
+    @font-size: (4em / 3);
+    line-height: (3em / 4);
+    vertical-align: -15%;
+    .shape-local-var();
+    .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: @font-size; @inline: true; @shape: none; @float: none);
+
+    &:before {
+        content: @opc-icon-var;
+    }
+}
+
+.shp-main(@opc-prefix: @icon-prefix; @opc-color: inerit; @font-size: inerit) {
+    .shape-local-var();
+    .@{opc-prefix} {
+        .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: @font-size; @inline: true; @shape: none; @float: none);
+    }
+}
+
+.shp-largue(@opc-prefix: @icon-prefix; @opc-color: inerit) {
+    .shape-local-var();
+    .@{opc-prefix}-2x {
+        .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: 2; @inline: true; @shape: none; @float: none);
+    }
+
+    .@{opc-prefix}-3x {
+        .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: 3; @inline: true; @shape: none; @float: none);
+    }
+}
+//
+///* 6 *//* INITIALIZED PATTERNS */
+.shape-init() {
+    .shape-local-var();
+    //.icon-init();
+    //.icon-main();
+    //.icon-largue();
+}
+
+//
+/* shape ------------- [ + ] */@state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/

@@ -28,6 +28,7 @@
 ///* 1 *//* CONFIG ICON VARIABLES */
 //
 ///* Version */
+@gi-family: 'Glyphicons';
 @gi-name: glyphicons;
 @gi-version: "1.9.2";
 //
@@ -53,14 +54,21 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE CLASS */
-.icn-class(@prefix, @font) when (@font = glyphicons) and (@icon-class-reference = true) {
-     @glyphicons-prefix:  ~'@{icon-prefix}-@{prefix}';
-     .gly-class(@glyphicons-prefix);
+.scr-class(@font) when (@font = glyphicons) and (@icon-class-reference = true) {
+     @glyphicons-prefix:  @icon-general-prefix;
+     i[class^='@{glyphicons-prefix}']{font-family: @gi-family;}
+     .scr-gly-class(@glyphicons-prefix);
+}
+//
+.scr-class(@font, @prefix) when (@font = glyphicons) and (@icon-class-reference = true) {
+     @glyphicons-prefix:  ~'@{icon-general-prefix}-@{prefix}';
+     i[class^='@{glyphicons-prefix}']{font-family: @gi-family;}
+     .scr-gly-class(@glyphicons-prefix);
 }
 //
 ///* 4 *//* CONFIG MIXIN */
 ///* Individual inline iconos  *///
-.gly-class(@glyphicons-prefix){
+.scr-gly-class(@glyphicons-prefix){
     .@{glyphicons-prefix}-asterisk               { &:before { content: "\2a"; } }
     .@{glyphicons-prefix}-plus                   { &:before { content: "\2b"; } }
     .@{glyphicons-prefix}-euro,
@@ -330,7 +338,7 @@
     .@{glyphicons-prefix}-menu-up                { &:before { content: "\e260"; } }
 }
 //
-/* glyphicons -------- [ + ] */@state: OK;
+/* def glyphicons ---- [ + ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

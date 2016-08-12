@@ -8,7 +8,17 @@
 ///*  License: GNU General Public License v2 or later
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ///******************************************/
-@base: 10;
+@base:         10;
+//
+///******************************************/
+///*       Javascript Functions             */
+///******************************************/
+// pixel to rem sizes
+@function-rem: ~ `eval('rem=function(pixel){return Math.round(1000*Number(pixel.split("px")[0])/"@{base}")/1000+"rem";};')`;
+// pixel to em sizes
+@function-em: ~ `eval('em=function(pixel, base){return Math.round(1000*Number(pixel.split("px")[0])/Number(base.split("px")[0]))/1000+"em";};')`;
+//
+///******************************************/
 //
 .fnt-padding(@opc-size: 4) {
     @fontBase: 1rem * (@opc-size + 6) * 1/10;
@@ -16,15 +26,13 @@
     @padLat: 1rem * (@opc-size + 1) * 15/100;
     @fnt-padding: @padSup @padLat;
 }
-// pixel to rem sizes
-@function-rem: ~ `eval('rem=function(pixel){return Math.round(1000*Number(pixel.split("px")[0])/"@{base}")/1000+"rem";};')`;
-// pixel to em sizes
-@function-em: ~ `eval('em=function(pixel, base){return Math.round(1000*Number(pixel.split("px")[0])/Number(base.split("px")[0]))/1000+"em";};')`;
-// if statement
+//
+///* if statement */
 .if(@condition; @property; @value) when (@condition = true) {
     @{property}: @value;
 }
-// properties size in rem unit
+//
+///* properties size in rem unit */
 .px-to-rem(@property; @sizeValue; @both: false;) {
     @pxValue: unit(@sizeValue);
     @remValue: (@pxValue / @base);
@@ -32,6 +40,37 @@
     @{property}: ~"@{remValue}rem";
 }
 //
+///* init @font-face */
+.font-face(@opc-family, @opc-version, @font-path, @opc-name-font, @opc-embedded, @opc-data) {
+    @selector: ~"@font-face";
+
+    & when (@opc-embedded = true) {
+        .@{selector} {
+            font-family: @opc-family;
+            src: ~'url("@{font-path}/@{opc-name-font}.eot")';
+            src: ~'url("@{font-path}/@{opc-name-font}.eot?#iefix") format("embedded-opentype")',
+                ~'url("data:application/font-woff2;charset=utf-8;base64,@{opc-data}") format("woff2")',
+                ~'url("@{font-path}/@{opc-name-font}.woff") format("woff")',
+                ~'url("@{font-path}/@{opc-name-font}.ttf") format("truetype")',
+                ~'url("@{font-path}/@{opc-name-font}.svg#fontcustom") format("svg")';
+            font-weight: normal;
+            font-style: normal;
+        }
+    }
+
+    & when not (@opc-embedded = true) {
+        .@{selector} {
+            font-family: @opc-family;
+            src: ~'url("@{font-path}/@{opc-name-font}.eot")';
+            src: ~'url("@{font-path}/@{opc-name-font}.eot?#iefix") format("embedded-opentype")',
+                ~'url("@{font-path}/@{opc-name-font}.woff") format("woff")',
+                ~'url("@{font-path}/@{opc-name-font}.ttf") format("truetype")',
+                ~'url("@{font-path}/@{opc-name-font}.svg#fontcustom") format("svg")';
+            font-weight: normal;
+            font-style: normal;
+        }
+    }
+}
 /* function ---------- [ + ] */@state: OK;
 ///******************************************/
 ///*  	FIN

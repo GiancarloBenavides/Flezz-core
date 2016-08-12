@@ -1,0 +1,103 @@
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: icons
+///*  Version: 0.2.7
+///*  Description: description icons
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///*  Tags: iconos, css.
+///******************************************/
+///*  Requiere: none.
+///******************************************/
+///*  	Content
+///*
+///*  1. Local variables.
+///*  2. Road map.
+///*  3. Base component.
+///*  4. Config mixin.
+///*  5. Preconfigured patterns.
+///*  6. Initialized patterns.
+///******************************************/
+///* Dependencies */
+@import '../_shared/_shared.less';
+@import 'source-awesome.less';
+@import 'source-foundation.less';
+@import 'source-glyphicons.less';
+//
+///* 1 *//* LOCAL VARIABLES *///
+.scr-local-var() {
+
+}
+///* 2 *//* ROAD MAP */
+// --------------------------------------------------
+
+// --------------------------------------------------
+//
+///* 3 *//* BASE COMPONENT */
+.scr-icon-init() {
+    & when (@icon-multiple-sources = true) {
+        .scr-awesome-init();
+        .scr-foundation-init();
+        .scr-glyphicon-init();
+        .scr-class(awesome, @icon-awesome-prefix);
+        .scr-class(foundation, @icon-foundation-prefix);
+        .scr-class(glyphicons, @icon-glyphicons-prefix);
+    }
+    & when not (@icon-multiple-sources = true) {
+        .scr-icon-init-path(@icon-default-font);
+        .scr-class(@icon-default-font);
+    }
+}
+//
+///* 4 *//* CONFIG MIXIN */
+.scr-awesome-init() when (@icon-awesome = true){
+    .scr-icon-init-path(awesome);
+}
+.scr-glyphicon-init() when (@icon-glyphicons = true){
+    .scr-icon-init-path(glyphicons);
+}
+.scr-foundation-init() when (@icon-foundation = true){
+    .scr-icon-init-path(foundation);
+}
+//
+.scr-icon-init-path(@font) {
+    & when (@font = foundation) {
+        @family: @fu-family;
+        @version: @fu-version;
+        @name: @fu-name;
+        @embedded: @fu-embedded;
+        .font-face(@family, @version, @icon-path, @name, @icon-embedded, @embedded);
+    }
+
+    & when (@font = glyphicons) {
+        @family: @gi-family;
+        @version: @gi-version;
+        @name: @gi-name;
+        @embedded: @gi-embedded;
+        .font-face(@family, @version, @icon-path, @name, @icon-embedded, @embedded);
+    }
+
+    & when (@font = awesome) {
+        @family: @fa-family;
+        @version: @fa-version;
+        @name: @fa-name;
+        @embedded: @fa-embedded;
+        .font-face(@family, @version, @icon-path, @name, @icon-embedded, @embedded);
+    }
+}
+//
+///* 5 *//* PRECONFIGURED PATTERNS */
+
+//
+///* 6 *//* INITIALIZED PATTERNS */
+.scr-init(){
+    .scr-icon-init();
+}
+//
+/* sources ----------- [ + ] */@state: OK;
+///******************************************/
+///*  	FIN
+///******************************************/
