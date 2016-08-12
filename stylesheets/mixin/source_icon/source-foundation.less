@@ -49,9 +49,12 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE CLASS */
+.shp-font-family() when (@icon-multiple-sources = false) and (@icon-default-font = foundation) {
+    font-family: @fu-family;
+}
+//
 .scr-class(@font) when (@font = foundation) and (@icon-class-reference = true) {
     @foundation-prefix:  @icon-general-prefix;
-    i[class^='@{foundation-prefix}']{font-family: @fu-family;}
     .scr-fdt-class(@foundation-prefix);
 }
 //

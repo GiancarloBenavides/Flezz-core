@@ -3,7 +3,7 @@
 ///*          flezz framework 1.0           */
 ///******************************************/
 ///*  Name: icon
-///*  Version: 0.2.8
+///*  Version: 0.2.9
 ///*  Description: description icon
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
@@ -25,6 +25,9 @@
 //
 ///* Dependencies */
 @import '../_shared/_shared.less';
+@import 'source-awesome.less';
+@import 'source-foundation.less';
+@import 'source-glyphicons.less';
 //
 ///* 1 *//* LOCAL VARIABLES *///
 .shape-local-var(){
@@ -46,7 +49,7 @@
     width: 1em;
     .shp-size(@size);
     text-align: center;
-    .shp-font-family(@font-family);
+    .shp-font-family();
     text-decoration: none;
     font-variant: normal;
     font-weight: normal;
@@ -65,10 +68,6 @@
 }
 //
 ///* 4 *//* CONFIG MIXIN */
-.shp-font-family(@font-family) when (@icon-multiple-sources = false) {
-    font-family: @font-family;
-}
-
 .shp-display(@opc-inline) when (@opc-inline = true) {
     display: inline-block;
     .shp-font();
@@ -125,7 +124,7 @@
 }
 //
 ///* 5 *//* PRECONFIGURED PATTERNS */
-.shp-inline(@opc-color: @icon-default-color; @opc-icon-var: @icon-user) {
+.shape-inline(@opc-color: @icon-default-color; @opc-icon-var: @icon-user) {
     @font-size: (4em / 3);
     line-height: (3em / 4);
     vertical-align: -15%;
@@ -137,14 +136,14 @@
     }
 }
 
-.shp-main(@opc-prefix: @icon-prefix; @opc-color: inerit; @font-size: inerit) {
+.shape-main(@opc-prefix: @icon-general-prefix; @opc-color: inerit; @font-size: inerit) {
     .shape-local-var();
     .@{opc-prefix} {
         .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: @font-size; @inline: true; @shape: none; @float: none);
     }
 }
 
-.shp-largue(@opc-prefix: @icon-prefix; @opc-color: inerit) {
+.shape-largue(@opc-prefix: @icon-general-prefix; @opc-color: inerit) when (@icon-class-large = true) {
     .shape-local-var();
     .@{opc-prefix}-2x {
         .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: 2; @inline: true; @shape: none; @float: none);
@@ -158,11 +157,9 @@
 ///* 6 *//* INITIALIZED PATTERNS */
 .shape-init() {
     .shape-local-var();
-    //.icon-init();
-    //.icon-main();
-    //.icon-largue();
+    .shape-main();
+    .shape-largue();
 }
-
 //
 /* shape ------------- [ + ] */@state: OK;
 ///******************************************/
