@@ -1,21 +1,29 @@
 ///******************************************/
 ///*          flezz framework 1.0           */
 ///******************************************/
-///*  Name: equalize
+///*  Name: ui
 ///*  Version: 0.2.7
-///*  Description: equal properties width css mixin.
+///*  Description: Global ui.
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
 ///*  License: GNU General Public License v2 or later
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
-///*  Tags: mixin, plugin, css.
+///*  Tags: mixin, css.
+///******************************************/
+///*  	Content
+///*
+///*  1. Dependencies.
 ///******************************************/
 ///* Dependencies */
-@import 'normalize.less';
-@import 'start-up.less';
-//@import 'scroll.less';
+@import 'frame_layout/_config.layout.less';
 //
-/* --> shared ----- [ FULL ] */ @state: OK;
+
+//
+.flezz-layout-init() {
+    .layout-local-var();
+    .layout-init();
+}
+/* add flezz layout - [ OK ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

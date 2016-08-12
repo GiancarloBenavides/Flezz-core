@@ -37,6 +37,10 @@
 @info:        rgb(49,176,213);
 @warning:     rgb(236,151,31);
 @danger:      rgb(217,83,79);
+//
+@caution:     rgb(246,180,1);
+@alert:       rgb(207,42,14);
+@default:     rgb(224,224,224);
 //* action button colors *//
 @secondary-light-percent: 20%;   //20% Body color 
 @hover-light-percent:     30%;   //30% button color
@@ -132,22 +136,22 @@
 @dark-nav-color:      fade(black, @header-transparent); //rgba(18, 25, 41, 1.7);
 @dark-color:          fade(white, @dark-color-percent);
 @dark-panel-color:    fade(black, @dark-panel-color-percent);
-@secondary-light:     fade(white, @secondary-light-percent);
-@hover-light:         fade(white, @hover-light-percent);
-@focus-light:         fade(white, @focus-light-percent);
-@active-light:        fade(white, @active-light-percent);
+@secondary-dark:      fade(white, @secondary-light-percent);
+@hover-dark:          fade(white, @hover-light-percent);
+@focus-dark:          fade(white, @focus-light-percent);
+@active-dark:         fade(white, @active-light-percent);
 //* light theme *//
-@light-background:         darken(@dark-panel-background, 10%);
-@light-panel-background:   @dark-panel-background;
-@light-select-color:       @dark-background;
-@light-header-color:       @dark-select-color;
-@light-nav-color:          fade(black, @header-transparent);
-@light-color:              @dark-panel-color-percent;
-@light-panel-color:        @dark-color-percent;
-@secondary-dark:           fade(white, (@secondary-light-percent / 3));    // 7% Body color 
-@hover-dark-percent:       fade(white, (@hover-light-percent / 2));        //14% Body color
-@focus-dark-percent:       fade(white, (@focus-light-percent / 2));        //20% Body color
-@active-dark-percent:      fade(white, (@active-light-percent / 2));       //30% Body color
+@light-background:          darken(@dark-panel-background, 10%);
+@light-panel-background:    @dark-panel-background;
+@light-select-color:        @dark-background;
+@light-header-color:        @dark-select-color;
+@light-nav-color:           fade(black, @header-transparent);
+@light-color:               @dark-panel-color-percent;
+@light-panel-color:         @dark-color-percent;
+@secondary-light:           fade(white, (@secondary-light-percent / 3));    // 7% Body color 
+@hover-light:               fade(white, (@hover-light-percent / 2));        //14% Body color
+@focus-light:               fade(white, (@focus-light-percent / 2));        //20% Body color
+@active-light:              fade(white, (@active-light-percent / 2));       //30% Body color
 //* border color *//
 @border-darken:  rgba(0,0,0,0.24);
 @shadow-darken:  rgba(255,255,255,0.12);

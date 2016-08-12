@@ -12,31 +12,99 @@
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. Included modules.
-///*  2. statements.
-///*  3. initialized modules
+///*  1. Included component.
+///*  2. local variables.
+///*  3. Initialized component
 ///******************************************/
-///* PATH */
-
-//
 ///* 1 *//* INCLUDED MODULES *///
-@import 'zicon.less';
 @import 'awesome.less';
+@import 'foundation.less';
 @import 'glyphicons.less';
 //
-///* 2 *//* STATEMENTS *///
+///* 2 *//* LOCAL VARIABLES *///
+.icon-local-var() {
+}
 //
-///* Global variables */
-@import '../_shared/_shared.less';
-//
-///* local variables */
-
-//
-///* 3 *//* INITIALIZED MODULES */
+///* 3 *//* INITIALIZED MODULES *
 .icon-init() {
     .awesome-init();
+    .glyphicon-init();
+    .foundation-init();
+    .icn-class(fa,awesome);
+    .icn-class(gi,glyphicons);
+    .icn-class(fu,foundation);
 }
-/* icon ----------- [ FULL ] */ @state: OK;
+//
+//
+.awesome-init() when (@icon-awesome = true){
+    .icon-init-path(awesome);
+}
+.glyphicon-init() when (@icon-glyphicons = true){
+    .icon-init-path(glyphicons);
+}
+.foundation-init() when (@icon-foundation = true){
+    .icon-init-path(foundation);
+}
+//
+//
+.icon-init-path(@font) {
+    & when (@font = foundation) {
+        @family: 'Foundation';
+        @version: @fu-version;
+        @name: @fu-name;
+        @embedded: @fu-embedded;
+        .font-face(@family, @version, @icon-path, @name, @embedded);
+    }
+
+    & when (@font = glyphicons) {
+        @family: 'Glyphicons';
+        @version: @gi-version;
+        @name: @gi-name;
+        @embedded: @gi-embedded;
+        .font-face(@family, @version, @icon-path, @name, @embedded);
+    }
+
+    & when (@font = awesome) {
+        @family: 'Awesome';
+        @version: @fa-version;
+        @name: @fa-name;
+        @embedded: @fa-embedded;
+        .font-face(@family, @version, @icon-path, @name, @embedded);
+    }
+}
+///* init @font-face */
+.font-face(@opc-family, @opc-version, @font-path, @opc-name-font, @opc-embedded) {
+    @selector: ~"@font-face";
+
+    & when (@icon-embedded = true) {
+        .@{selector} {
+            font-family: @opc-family;
+            src: ~'url("@{font-path}/@{opc-name-font}.eot")';
+            src: ~'url("@{font-path}/@{opc-name-font}.eot?#iefix") format("embedded-opentype")',
+                ~'url("data:application/font-woff2;charset=utf-8;base64,@{opc-embedded}") format("woff2")',
+                ~'url("@{font-path}/@{opc-name-font}.woff") format("woff")',
+                ~'url("@{font-path}/@{opc-name-font}.ttf") format("truetype")',
+                ~'url("@{font-path}/@{opc-name-font}.svg#fontcustom") format("svg")';
+            font-weight: normal;
+            font-style: normal;
+        }
+    }
+
+    & when not (@icon-embedded = true) {
+        .@{selector} {
+            font-family: @opc-family;
+            src: ~'url("@{font-path}/@{opc-name-font}.eot")';
+            src: ~'url("@{font-path}/@{opc-name-font}.eot?#iefix") format("embedded-opentype")',
+                ~'url("@{font-path}/@{opc-name-font}.woff") format("woff")',
+                ~'url("@{font-path}/@{opc-name-font}.ttf") format("truetype")',
+                ~'url("@{font-path}/@{opc-name-font}.svg#fontcustom") format("svg")';
+            font-weight: normal;
+            font-style: normal;
+        }
+    }
+}
+//
+/* icon ----------- [ FULL ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/
