@@ -41,13 +41,10 @@
 ///* 3 *//* BASE MODULES */
 .up-html() {
     height: 100%;
-    font-family: @font-regular;
+    font-family: @star-up-font;
     .up-html-font-size();
     -webkit-font-smoothing: antialiased;
-    -moz-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
+    .text-adjust();
 }
 
 .up-body() {
@@ -117,53 +114,63 @@
     }
 }
 //
+.text-adjust() when (@test-size-adjust = true){
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+//
 .up-user-select() when (@user-select = false) {
     .user-select();
 }
 //
 .up-body-color() {
-    & when (@theme-initial = dark) {
+    & when (@theme-initial-dark = true) {
         background-color: @dark-background;
         color: @dark-color;
     }
 
-    & when not (@theme-initial = dark) {
+    & when not (@theme-initial-dark = true) {
         background-color: @light-background;
         color: @light-color;
     }
 }
 
 .up-html-font-size() {
-    & when (@font-size-user = true) {
-        font-size: @small-font;
-        line-height: @small-font;
+    & when (@font-size-user-changue = true) {
+        font-size:   (1em * unit(@small-font));
+        line-height: 1;
     }
 
-    & when not (@font-size-user = true) {
-        font-size: 10px;
-        line-height: 10px;
+    & when not (@font-size-user-changue = true) {
+        font-size: percentage(10/@base);
+        line-height: 1;
     }
 }
 
 .up-body-font-size() {
-    & when (@font-size-user = true) {
-        font-size: 1em;
+    & when (@font-size-user-changue = true) {
+        font-size:   1rem;
+        line-height: 1.2;
+
     }
 
-    & when not (@font-size-user = true) {
-        @size: (@small-font/10);
+    & when not (@font-size-user-changue = true) {
+        @size: unit(@small-font * @base/10);
         font-size: @size*1rem;
+        line-height: 1.2;
     }
 }
 //
 ///* 5 *//* PRECONFIGURED PATTERNS */
-.html() {
+.start-html() {
     html {
         .up-html();
     }
 }
 
-.body() {
+.start-body() {
     body {
         .up-body();
     }
@@ -172,8 +179,8 @@
 ///* 6 *//* INITIALIZED PATTERNS */
 .start-init() {
     .start-local-var();
-    .html();
-    .body();
+    .start-html();
+    .start-body();
     .up-link();
     .up-ul();
 }

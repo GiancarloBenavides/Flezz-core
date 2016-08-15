@@ -13,6 +13,9 @@
 ///* Dependencies */
 //@import 'function.less';
 ///* 1 *//* path files *///
+@icon-path: "../../@assets/icons";
+@font-path: "../../@assets/fonts";
+//
 @path-root-to-css: 'Content/css/';
 @path-css-to-font: '../fonts/';
 @path-css-to-icon: '../icons/';
@@ -28,40 +31,34 @@
 @base: unit(@font-root);
 @scroll-bar-width: 17px;
 ///* 3 *//* breakpoints *///
-@small-movil:       ~`rem('384px')`;   ///* mini-smartphones *///
-@small-phone:       ~`rem('448px')`;   ///* smartphones, e-readers, smaller tablets *///
-@medium-phablet:    ~`rem('640px')`;   ///* big smartphones, portrait e-readers, tablets *///
-@medium-tablet:     ~`rem('960px')`;   ///* landscape tablet, lo-res laptops ands desktops *///
-@large-desktop:    ~`rem('1024px')`;   ///* big landscape tablets, laptops, and desktops *///
-@large-widescreen: ~`rem('1280px')`;   ///* hi-res laptops and desktops *///
+@small-movil:       unit(384px/@font-root, rem);   ///* mini-smartphones *///
+@small-phone:       unit(448px/@font-root, rem);   ///* smartphones, e-readers, smaller tablets *///
+@medium-phablet:    unit(640px/@font-root, rem);   ///* big smartphones, portrait e-readers, tablets *///
+@medium-tablet:     unit(960px/@font-root, rem);   ///* landscape tablet, lo-res laptops ands desktops *///
+@large-desktop:    unit(1024px/@font-root, rem);   ///* big landscape tablets, laptops, and desktops *///
+@large-widescreen: unit(1280px/@font-root, rem);   ///* hi-res laptops and desktops *///
 ///* 3 *//* gutter breakpoints *///
-@small-gutter:  ~`rem('10px')`;     ///* smartphones *///
-@medium-gutter: ~`rem('16px')`;     ///* big smartphones, tablet *///
-@large-gutter:  ~`rem('20px')`;     ///* hi-res laptops and desktops *///
+@small-gutter:  unit(10px/@font-root, rem);     ///* smartphones *///
+@medium-gutter: unit(16px/@font-root, rem);     ///* big smartphones, tablet *///
+@large-gutter:  unit(20px/@font-root, rem);     ///* hi-res laptops and desktops *///
 ///* 3 *//* root <html> font size breakpoints *///
 // NOTA: ideal range of characters per line [40-80]
-@small-font:    ~`em('14px',"@{font-root}")`;       ///* smartphones *///
-@medium-font:   ~`em('16px',"@{font-root}")`;       ///* big smartphones, tablet *///
-@large-font:    ~`em('18px',"@{font-root}")`;       ///* hi-res laptops and desktops *///
+@small-font:    unit(14px/@font-root, em);       ///* smartphones *///
+@medium-font:   unit(16px/@font-root, em);       ///* big smartphones, tablet *///
+@large-font:    unit(18px/@font-root, em);       ///* hi-res laptops and desktops *///
 ///* 4 *//* head sizes *///
-@head1: ~`rem('32px')`;
-@head2: ~`rem('24px')`; 
-@head3: ~`rem('18px')`;
-@head4: ~`rem('16px')`;
-@head5: ~`rem('14px')`;
-@head6: ~`rem('12px')`;
+@head1: unit(32px/@font-root, rem);
+@head2: unit(24px/@font-root, rem); 
+@head3: unit(18px/@font-root, rem);
+@head4: unit(16px/@font-root, rem);
+@head5: unit(14px/@font-root, rem);
+@head6: unit(12px/@font-root, rem);
 ///* 5 *//* general sizes *///
-@main-header-height:        ~`rem('75px')`;
-@main-footer-height:        ~`rem('25px')`;
-@right-panel-width:         ~`rem('44px')`;
-@left-panel-width:         ~`rem('100px')`;
-@panel-max-width:          ~`rem('512px')`;
-//
-@text-global:    ~`em('1px','10px')`;
-//
-@font-size-user: true;          //rem browser = true or rem fixed = false
-@overflow-vertical: false;
-@user-select: false;
+@main-header-height:        unit(75px/@font-root, rem);
+@main-footer-height:        unit(25px/@font-root, rem);
+@right-panel-width:         unit(44px/@font-root, rem);
+@left-panel-width:         unit(100px/@font-root, rem);
+@panel-max-width:          unit(512px/@font-root, rem);
 //
 /* global ------------ [ + ] */@state: OK;
 ///******************************************/

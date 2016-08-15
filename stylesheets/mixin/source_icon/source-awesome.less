@@ -783,7 +783,9 @@
 //
 ///* 3 *//* BASE CLASS */
 .shp-font-family() when (@icon-multiple-sources = false) and (@icon-default-font = awesome) {
-    font-family: @fa-family;
+    //font: font-style font-variant font-weight font-size/line-height font-family;
+    font:normal normal normal .8em/1.5 @fa-family;
+    vertical-align: 9%;
 }
 //
 .scr-class(@font) when (@font = awesome) and (@icon-class-reference = true) {

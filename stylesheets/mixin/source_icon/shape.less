@@ -46,15 +46,12 @@
 .shp-icon(@color; @bck-color; @border-color; @size; @inline: true; @shape: none; @float: none) {
     .shp-display(@inline);
     .shp-float(@float);
-    width: 1em;
+    width: 1.1em;
+    margin: 0 2px;
     .shp-size(@size);
     text-align: center;
     .shp-font-family();
     text-decoration: none;
-    font-variant: normal;
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1;
     text-rendering: auto;       // optimizelegibility throws things off #1094
     -webkit-font-smoothing: antialiased;
     //-moz-osx-font-smoothing: grayscale;
@@ -138,13 +135,20 @@
 
 .shape-main(@opc-prefix: @icon-general-prefix; @opc-color: inerit; @font-size: inerit) {
     .shape-local-var();
-    .@{opc-prefix} {
+    .@{opc-prefix},
+     i[class^='@{opc-prefix}']{
         .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: @font-size; @inline: true; @shape: none; @float: none);
     }
 }
 
 .shape-largue(@opc-prefix: @icon-general-prefix; @opc-color: inerit) when (@icon-class-large = true) {
     .shape-local-var();
+    i[class~="@{opc-prefix}-6x"]{font-size: 6em}
+    i[class~="@{opc-prefix}-5x"]{font-size: 5em}
+    i[class~="@{opc-prefix}-4x"]{font-size: 4em}
+    i[class~="@{opc-prefix}-3x"]{font-size: 3em}
+    i[class~="@{opc-prefix}-2x"]{font-size: 2em}
+
     .@{opc-prefix}-2x {
         .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: 2; @inline: true; @shape: none; @float: none);
     }
