@@ -1,0 +1,33 @@
+///*******************************
+///* CONFIG GLOBAL MODULE AGREEMENT
+///* grupo de componentes (Modulo)
+///*******************************
+///* name spaces
+///*******************************
+///*
+///*
+///*******************************
+///*  1. Global variables.
+///*******************************
+Todas las variables globales al grupo de componentes (Modulo)
+
+EJEMPLO 
+@[name_component_1]-[name_variable_1]: value1;
+@[name_component_1]-[name_variable_2]: value2;
+@[name_component_1]-[name_variable_3]: value3;
+@[name_component_1]-[name_variable_4]: value4;
+....
+
+
+@[name_component_2]-[name_variable_5]: value5;
+@[name_component_2]-[name_variable_6]: value6;
+@[name_component_2]-[name_variable_7]: value7;
+@[name_component_2]-[name_variable_8]: value8;
+....
+
+
+///*******************************
+///*  FIN
+///*******************************
+
+
