@@ -152,14 +152,14 @@
 .up-body-font-size() {
     & when (@font-size-user-changue = true) {
         font-size:   1rem;
-        line-height: 1.2;
+        line-height: @line-height;
 
     }
 
     & when not (@font-size-user-changue = true) {
         @size: unit(@small-font * @base/10);
         font-size: @size*1rem;
-        line-height: 1.2;
+        line-height: @line-height;
     }
 }
 //

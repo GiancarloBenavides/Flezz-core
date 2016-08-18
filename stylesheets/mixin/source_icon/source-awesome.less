@@ -795,7 +795,7 @@
 //
 .scr-class(@font, @prefix) when (@font = awesome) and (@icon-class-reference = true) {
      @fa-css-prefix: ~'@{icon-general-prefix}-@{prefix}';
-    i[class^='@{fa-css-prefix}']{font-family: @fa-family;}
+    i[class^='@{fa-css-prefix}-']{font-family: @fa-family;}
     .scr-aws-class(@fa-css-prefix);
 }
 //

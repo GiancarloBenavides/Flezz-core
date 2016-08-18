@@ -50,18 +50,23 @@
     margin: 0 2px;
     .shp-size(@size);
     text-align: center;
+    .shp-shape(@bck-color, @border-color, @shape);
+    .shp-color(@color);
+}
+//
+.shp-icon-before {
     .shp-font-family();
-    text-decoration: none;
-    text-rendering: auto;       // optimizelegibility throws things off #1094
-    -webkit-font-smoothing: antialiased;
-    //-moz-osx-font-smoothing: grayscale;
-    -moz-transform: translate(0, 0);
+    -moz-transform: translate(0, 0); // ensures no half-pixel rendering in firefox
     -ms-transform: translate(0, 0);
     -o-transform: translate(0, 0);
     -webkit-transform: translate(0, 0);
-    transform: translate(0, 0); // ensures no half-pixel rendering in firefox
-    .shp-shape(@bck-color, @border-color, @shape);
-    .shp-color(@color);
+    transform: translate(0, 0);
+    //-moz-osx-font-smoothing: grayscale;
+    .user-select();
+    text-decoration: none;
+    text-transform: none;
+    text-rendering: auto; // optimizelegibility throws things off #1094
+    margin-left:2px;
 }
 //
 ///* 4 *//* CONFIG MIXIN */
@@ -136,8 +141,11 @@
 .shape-main(@opc-prefix: @icon-general-prefix; @opc-color: inerit; @font-size: inerit) {
     .shape-local-var();
     .@{opc-prefix},
-     i[class^='@{opc-prefix}']{
+     i[class*='@{opc-prefix}-']{
         .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: @font-size; @inline: true; @shape: none; @float: none);
+    }
+    i[class*='@{opc-prefix}-']:before{
+        .shp-icon-before();
     }
 }
 
