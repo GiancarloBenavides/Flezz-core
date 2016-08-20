@@ -44,10 +44,11 @@
 @lg-gutter:    20px;     ///* hi-res laptops and desktops *///
 ///* 3 *//* root <html> font size breakpoints *///
 // NOTA: ideal range of characters per line [40-80]
-@sm-font:    unit(15px/@font-root, em);
-@md-font:    unit(16px/@font-root, em);       ///* smartphones *///
-@lg-font:    unit(17px/@font-root, em);       ///* big smartphones, tablet *///
-@xl-font:    unit(18px/@font-root, em);       ///* hi-res laptops and desktops *///
+@sm-font:    (unit(15px/@font-root, em));
+@md-font:    (unit(16px/@font-root, em));       ///* smartphones *///
+@lg-font:    (unit(17px/@font-root, em));       ///* big smartphones, tablet *///
+@xl-font:    (unit(18px/@font-root, em));       ///* hi-res laptops and desktops *///
+@wd-font:    (unit(19px/@font-root, em));       ///* hi-res desktops widescreen *///
 ///* 4 *//* head sizes *///
 @head1: unit(32px/@font-root, rem);
 @head2: unit(24px/@font-root, rem); 

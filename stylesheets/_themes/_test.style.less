@@ -6,7 +6,7 @@
 @theme-initial-dark: false;
 @overflow-vertical: true;
 @light-background: #fafafa; 
-
+//
 ///* Docs config Core *///
 .flezz-font-init();
 .flezz-icon-init();
@@ -15,43 +15,53 @@
 //
 ///* Docs Style aditional class *///
 section.test {
-    width: calc(100% ~'-' @scroll-width + @sm-gutter*4);
-    padding: 0 2*@sm-gutter @sm-gutter;
-    background-color: #fafaee;border: 2px dashed #000000;
+    max-width: 700px;
+    margin-bottom: @sm-gutter;
+    padding: @sm-gutter;
+    background-color: #fafaee;
+    border: 2px dashed #000000;
     
     h2.title {
-        height:2.5em;line-height: 2.5; white-space:nowrap;overflow:hidden;
-        margin: @sm-gutter -@sm-gutter 2*@sm-gutter;padding-right: 40px;
+        height:2.5em;line-height:2.5;white-space:nowrap;overflow:hidden;
+        padding:0 @sm-gutter;
         text-align: right;
         background-color: black;color: white;
     }
-}
+    article{
+        margin:@sm-gutter 0;padding-bottom:@sm-gutter;
+        background-color: white;
+    }
 
+}
+article{
+    h3{
+        height:2.3em;line-height:2.3;white-space:nowrap;overflow:hidden;
+        text-align:center;
+        background-color:@material-blue;color:white;
+    }
+    p{margin:@sm-gutter;}
+}
+//
+///* media queries *///
 @media screen and (min-width: @md) {
     section.test {
-        max-width: 700px;
-        margin: 2*@md-gutter auto;
+        margin-bottom: @md-gutter;
     }
 }
 
 @media screen and (min-width: @lg) {
     section.test {
-        padding: 0 2*@lg-gutter @lg-gutter;
+        margin-bottom: @lg-gutter;
 
         h2.title {
             font-family: 'OpenSansRegular';
-            margin-left: -3*@sm-gutter;
-            margin-right: -3*@sm-gutter;
             text-transform: uppercase;
         }
     }
 }
-
-.test:last-of-type {
-    margin-bottom: 50%;
-}
-.test:first-of-type {
-    margin-top: 50px;
-}
+//
+///* Docs Style aditional class *///
+.test:last-of-type {margin-bottom: 50%;}
+.test:first-of-type {margin-top: 50px;}
 li {display: inline-block;}
 //
