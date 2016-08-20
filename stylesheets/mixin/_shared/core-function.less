@@ -80,6 +80,19 @@
         }
     }
 }
+//
+.media-movil-first-small(@min; @property; @value) {
+    .loop(@counter) when (@counter > 0) {
+        .loop((@counter - 1));
+        @p: extract(@property, @counter );
+        @v: extract(@value, @counter );
+        @{p}: @v;
+    }
+
+    @media screen and (min-width: @min) {
+        .loop(length(@property));
+    }
+}
 /* function ---------- [ + ] */@state: OK;
 ///******************************************/
 ///*  	FIN

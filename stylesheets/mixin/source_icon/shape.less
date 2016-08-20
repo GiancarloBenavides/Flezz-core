@@ -49,12 +49,12 @@
     width: 1.1em;
     margin: 0 2px;
     .shp-size(@size);
-    text-align: center;
+    text-align: left;
     .shp-shape(@bck-color, @border-color, @shape);
     .shp-color(@color);
 }
 //
-.shp-icon-before {
+.shp-icon-before() {
     .shp-font-family();
     -moz-transform: translate(0, 0); // ensures no half-pixel rendering in firefox
     -ms-transform: translate(0, 0);

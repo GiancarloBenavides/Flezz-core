@@ -98,9 +98,16 @@
     }
 }
 
-.up-conteiner() {
-    margin: 0 @small-gutter;
+.up-header() {
+    h1,h2,h3,h4,h5,h6{font-weight: normal;}
+    h1 {font-size: @head1;}
+    h2 {font-size: @head2;}
+    h3 {font-size: @head3;}
+    h4 {font-size: @head4;}
+    h5 {font-size: @head5;}
+    h6 {font-size: @head6;}
 }
+
 //
 ///* 4 *//* CONFIG MIXIN */
 .up-overflow() {
@@ -114,7 +121,7 @@
     }
 }
 //
-.text-adjust() when (@test-size-adjust = true){
+.text-adjust() when (@test-size-adjust = true) {
     -moz-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
@@ -123,6 +130,18 @@
 //
 .up-user-select() when (@user-select = false) {
     .user-select();
+}
+//
+.up-html-font-size() {
+    & when (@font-nornalize-rem = true) {
+        font-size: percentage(10/@base);
+        line-height: 1;
+    }
+
+    & when not (@font-nornalize-rem = true) {
+        font-size: (1em * unit(@sm-font));
+        line-height: 1;
+    }
 }
 //
 .up-body-color() {
@@ -137,28 +156,15 @@
     }
 }
 
-.up-html-font-size() {
-    & when (@font-size-user-changue = true) {
-        font-size:   (1em * unit(@small-font));
-        line-height: 1;
-    }
-
-    & when not (@font-size-user-changue = true) {
-        font-size: percentage(10/@base);
-        line-height: 1;
-    }
-}
-
 .up-body-font-size() {
-    & when (@font-size-user-changue = true) {
-        font-size:   1rem;
+    & when (@font-nornalize-rem = true) {
+        @size: unit(@sm-font * @base/10);
+        font-size: @size*1rem;
         line-height: @line-height;
-
     }
 
-    & when not (@font-size-user-changue = true) {
-        @size: unit(@small-font * @base/10);
-        font-size: @size*1rem;
+    & when not (@font-nornalize-rem = true) {
+        font-size: 1rem;
         line-height: @line-height;
     }
 }
@@ -167,6 +173,18 @@
 .start-html() {
     html {
         .up-html();
+
+        @media screen and (min-width: @md) {
+            font-size: @md-font;
+        }
+
+        @media screen and (min-width: @lg) {
+            font-size: @lg-font;
+        }
+
+        @media screen and (min-width: @wd) {
+            font-size: @xl-font;
+        }
     }
 }
 
@@ -175,12 +193,24 @@
         .up-body();
     }
 }
+
+.up-conteiner() {
+    margin: 2*@sm-gutter @sm-gutter;
+}
+
+.start-wrap(){
+    section{
+        .up-conteiner();
+    }
+}
 //
 ///* 6 *//* INITIALIZED PATTERNS */
 .start-init() {
     .start-local-var();
     .start-html();
     .start-body();
+    .start-wrap();
+    .up-header();
     .up-link();
     .up-ul();
 }

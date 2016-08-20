@@ -13,14 +13,38 @@
 .flezz-color-init();
 .layout-init();
 //
-
-//
 ///* Docs Style aditional class *///
 section.test {
-    margin: 10px 20% 10px 10%;
-    background-color: #fafaee;
-    border: 2px dashed #f4e0f0;
-    padding: 30px;
+    width: calc(100% ~'-' @scroll-width + @sm-gutter*4);
+    padding: 0 2*@sm-gutter @sm-gutter;
+    background-color: #fafaee;border: 2px dashed #000000;
+    
+    h2.title {
+        height:2.5em;line-height: 2.5; white-space:nowrap;overflow:hidden;
+        margin: @sm-gutter -@sm-gutter 2*@sm-gutter;padding-right: 40px;
+        text-align: right;
+        background-color: black;color: white;
+    }
+}
+
+@media screen and (min-width: @md) {
+    section.test {
+        max-width: 700px;
+        margin: 2*@md-gutter auto;
+    }
+}
+
+@media screen and (min-width: @lg) {
+    section.test {
+        padding: 0 2*@lg-gutter @lg-gutter;
+
+        h2.title {
+            font-family: 'OpenSansRegular';
+            margin-left: -3*@sm-gutter;
+            margin-right: -3*@sm-gutter;
+            text-transform: uppercase;
+        }
+    }
 }
 
 .test:last-of-type {
