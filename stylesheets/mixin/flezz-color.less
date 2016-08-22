@@ -193,12 +193,56 @@
 }
 //
 ///* 6 *//* INITIALIZED PATTERNS */
-//
+.theme-color(@initial-theme) when (@initial-theme = dark) {
+    @theme-button-color:@dark-font-color;
+    @theme-background: @dark-body;
+    @theme-panel: @dark-panel;
+    @theme-select: @dark-accent;
+    @theme-header: @dark-header;
+    @theme-nav: @dark-nav;
+    @theme-nav-color: @dark-nav-color;
+    @theme-header-color: @dark-header-color;
+    @theme-color: @dark-color;
+    @theme-panel-color: @dark-panel-color;
+    @theme-primary: @dark-primary;
+    @theme-secondary: @dark-secondary;
+    @theme-hover: @hover-dark;
+    @theme-focus: @focus-dark;
+    @theme-active: @active-dark;
+    @theme-border: @border-hard-darken;
+    @theme-shadow-inset: @shadow-lighten;
+    @theme-shadow-outset: @shadow-darken;
+    @theme-link-hover:@link-lighten;
+}
+
+.theme-color(@initial-theme) when (@initial-theme = light) {
+    @theme-button-color:@light-font-color;
+    @theme-background: @light-body;
+    @theme-panel: @light-panel;
+    @theme-select: @light-accent;
+    @theme-header: @light-header;
+    @theme-nav: @light-nav;
+    @theme-nav-color: @light-nav-color;
+    @theme-header-color: @light-header-color;
+    @theme-color: @light-color;
+    @theme-panel-color: @light-panel-color;
+    @theme-primary:@light-primary;
+    @theme-secondary: @light-secondary;
+    @theme-hover: @hover-light;
+    @theme-focus: @focus-light;
+    @theme-active: @active-light;
+    @theme-border: @border-soft-darken;
+    @theme-shadow-inset: @shadow-lighten;
+    @theme-shadow-outset: @shadow-darken;
+    @theme-link-hover:@link-darken;
+}
+
 ///* Shorthand - Initialize Color *///
-.flezz-color-init() {
+.flezz-color-init(@option-color) {
     .font-color();
     .tiles-global-color();
     .button-global-color();
+    .theme-color(@option-color);
 }
 //
 /* add flezz color -- [ OK ] */@state: OK;

@@ -57,44 +57,41 @@
     text-rendering: optimizeLegibility;
     .up-user-select();
     z-index: 1;
-    .up-body-color();
+    background-color: @theme-background;
+    color: @theme-color;
 }
 
 .up-link() {
     a {
-        display: block;
+        @link-visited:darken(@dark-panel,55%);
         text-decoration: none;
         cursor: pointer;
-        color: @dark-link;
+        color: @theme-link;
 
-        &:hover {
-            color: @link-color;
-        }
+        &:hover {text-decoration:underline;color:@theme-link-hover;}
+        &:focus {outline:none;}
 
-        &:focus {
-            outline: none;
-        }
-
-        &.link {
-            display: inline-block;
-        }
-
-        &.link:hover {
-            text-decoration: underline;
-        }
+        &.link {display:inline-block;font-size:.9rem;font-style: italic;border-bottom: 1px dashed transparent;}
+        &.link:hover {text-decoration: none;border-color:@theme-link;}
+        
+        &:visited,&.link:visited{color:@link-visited;border-color:@link-visited;}
     }
+    [class*="bt-"] a,
+    [class*="tl-"] a,
+    button a,
+    nav a{display:block;&:hover{text-decoration: none;}}
 }
 
 .up-ul() {
-    nav > ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
+    nav {
+        font-family: @font-regular;
+        background-color: @theme-nav;
 
-        li {
-            margin: 0;
-            padding: 0;
-        }
+        &>ul{margin:0;padding:0;list-style:none;}
+        li{margin:0;padding:0;}
+        li:hover{background-color:@theme-select;}
+        a{text-transform:uppercase;color:@theme-nav-color;}
+        a:hover{text-decoration:none;color:white;}
     }
 }
 
@@ -144,18 +141,6 @@
     }
 }
 //
-.up-body-color() {
-    & when (@theme-initial-dark = true) {
-        background-color: @dark-background;
-        color: @dark-color;
-    }
-
-    & when not (@theme-initial-dark = true) {
-        background-color: @light-background;
-        color: @light-color;
-    }
-}
-
 .up-body-font-size() {
     & when (@font-nornalize-rem = true) {
         @size: unit(@sm-font * @base/10);
@@ -210,6 +195,27 @@
     }
     .wrap{
         padding:@sm-gutter;
+    }
+    .panel{
+        background-color:@theme-panel;
+        color:@theme-panel-color;
+        .panel-header();
+    }
+}
+
+.panel-header() {
+    & when (@theme-initial-dark = true) {
+        header {
+            background-color: @theme-border;
+            color:;
+        }
+    }
+
+    & not when (@theme-initial-dark = true) {
+        header {
+            background-color: @theme-select;
+            color:white;
+        }
     }
 }
 

@@ -1,43 +1,62 @@
 ///* Unconfig Core *///
 @import '../mixin/_config.core.less';
-//
+///******************************************/
+///*             color palette              */
+///******************************************/
+@theme-initial-dark:        false;
+@dark-background:           rgb(0,32,68);
+@dark-panel-background:     rgb(247,247,247);
+@dark-select-color:         rgb(0,143,206);       
+@link-color:                @twitter-LinK;
+///*    @theme-background                
+///*    @theme-panel-background  
+///*    @theme-select-color            
+///*    @theme-header-color              
+///*    @theme-nav-color         
+///*    @theme-color              
+///*    @theme-panel-color       
+///*    @theme-hover             
+///*    @theme-focus             
+///*    @theme-active             
+///*    @theme-border            
+///*    @theme-shadow-inset 
+///******************************************/
 ///* Docs Style variables  *///
 @star-up-font: @font-Light;
-@theme-initial-dark: false;
 @overflow-vertical: true;
-@light-background: #fafafa; 
 //
-///* Docs config Core *///
+///* Docs config Core */
 .flezz-font-init();
 .flezz-icon-init();
-.flezz-color-init();
+.flezz-color-init(light);    ///* dark-light
 .layout-init();
 //
 ///* Docs Style aditional class *///
+@color-theme:#ce1b7e;
 section.test {
-    max-width: 700px;
-    margin-bottom: @sm-gutter;
-    padding: @sm-gutter;
-    background-color: #fafaee;
-    border: 2px dashed #000000;
+    max-width: 700px;margin-bottom: @sm-gutter;padding: @sm-gutter;
+    background-color: @theme-panel;border: 2px dashed @theme-header;
     
     h2.title {
-        height:2.5em;line-height:2.5;white-space:nowrap;overflow:hidden;
-        padding:0 @sm-gutter;
-        text-align: right;
-        background-color: black;color: white;
+        height:2.5em;padding:0 @sm-gutter;line-height:2.5;white-space:nowrap;overflow:hidden;
+        text-align:right;
+        background-color:@theme-header;color: white;border-bottom: 6px solid @theme-select;
     }
     article{
         margin:@sm-gutter 0;padding-bottom:@sm-gutter;
         background-color: white;
     }
-
 }
+section.other{
+    @other-color:mix(spin(@theme-background, 70), @theme-select, 80%);
+    h2.title{background-color:darken(@other-color,-20%);border-color:@other-color;}
+}
+//
 article{
     h3{
-        height:2.3em;line-height:2.3;white-space:nowrap;overflow:hidden;
-        text-align:center;
-        background-color:@material-blue;color:white;
+        height:3em;line-height:3;white-space:nowrap;overflow:hidden;
+        text-transform:uppercase;text-align:center;
+        background-color:@theme-select;color:white;
     }
     p{margin:@sm-gutter;}
 }
