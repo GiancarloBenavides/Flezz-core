@@ -65,39 +65,6 @@
     .scr-icon-init-path(foundation);
 }
 //
-.scr-class-awesome-init() {
-    & when (@icon-shared-prefix = true) {
-        @general-css-prefix: ~'@{icon-general-prefix}-@{fa-prefix}';
-        .scr-class(awesome, @general-css-prefix);
-    }
-
-    & when not (@icon-shared-prefix = true) {
-        .scr-class(awesome, @fa-prefix);
-    }
-}
-
-.scr-class-foundation-init() {
-    & when (@icon-shared-prefix = true) {
-        @general-css-prefix: ~'@{icon-general-prefix}-@{fi-prefix}';
-        .scr-class(foundation, @general-css-prefix);
-    }
-
-    & when not (@icon-shared-prefix = true) {
-        .scr-class(foundation, @fi-prefix);
-    }
-}
-
-.scr-class-glyphicon-init() {
-    & when (@icon-shared-prefix = true) {
-        @general-css-prefix: ~'@{icon-general-prefix}-@{gi-prefix}';
-        .scr-class(glyphicons, @general-css-prefix);
-    }
-
-    & when not (@icon-shared-prefix = true) {
-        .scr-class(glyphicons, @gi-prefix);
-    }
-}
- 
 .scr-icon-init-path(@font) {
     & when (@font = foundation) {
         @family: @fi-family;

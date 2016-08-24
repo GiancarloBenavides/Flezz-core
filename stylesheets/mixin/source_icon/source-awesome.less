@@ -784,17 +784,28 @@
 //
 ///* 3 *//* BASE CLASS */
 .shp-font-family() when (@icon-multiple-sources = false) and (@icon-default-font = awesome) {
-    font:normal normal normal .8em/1.5 @fa-family;
+    font: normal normal normal .8em/1.5 @fa-family;
     vertical-align: 7%;
 }
 //
+.scr-class-awesome-init() {
+    & when (@icon-shared-prefix = true) {
+        @general-css-prefix: ~'@{icon-general-prefix}-@{fa-prefix}';
+        .scr-class(awesome, @general-css-prefix);
+    }
+
+    & when not (@icon-shared-prefix = true) {
+        .scr-class(awesome, @fa-prefix);
+    }
+}
+//
 .scr-class(@font) when (@font = awesome) and (@icon-class-reference = true) {
-    .scr-aws-class(@icon-awesome-prefix);
+    .scr-aws-class(@fa-prefix);
 }
 //
 .scr-class(@font, @prefix) when (@font = awesome) and (@icon-class-reference = true) {
     @{icon-awesome-selector} {
-        font:normal normal normal .8em/1.5 @fa-family;
+        font: normal normal normal .8em/1.5 @fa-family;
         vertical-align: 7%;
     }
 

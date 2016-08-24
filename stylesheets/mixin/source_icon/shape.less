@@ -42,18 +42,35 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE COMPONENT */
-.icon-main(@opc-prefix: @icon-general-prefix; @opc-color: inherit; @font-size: inherit) {
+.icon-main(@opc-prefix: @icon-general-prefix; @opc-color: inherit; @font-size: inherit) when (@icon-multiple-sources = true) {
     .shape-local-var();
     .shp-selector(@icon-awesome, @icon-foundation, @icon-glyphicons);
 
-    @{selector} {
+    .icon {
         .shp-icon(@opc-color; inherit; inherit; @font-size; true; none; none);
+
+        &:before {
+            .shp-icon-before();
+        }
     }
 
-    @{before} {
-        .shp-icon-before();
+    .shp-fa(@icon-awesome);
+    .shp-fi(@icon-foundation);
+    .shp-gi(@icon-glyphicons);
+}
+//
+.icon-main(@opc-prefix: @icon-general-prefix; @opc-color: inherit; @font-size: inherit) when not (@icon-multiple-sources = true) {
+    .shape-local-var();
+
+    @{icon-default-prefix}{
+        .shp-icon(@opc-color; inherit; inherit; @font-size; true; none; none);
+
+        &:before {
+            .shp-icon-before();
+        }
     }
 }
+//
 ///* 4 *//* CONFIG MIXIN */
 //
 ///* icon - mixin by main class *///
