@@ -39,12 +39,14 @@
 ///* 3 *//* BASE COMPONENT */
 .scr-icon-init() {
     & when (@icon-multiple-sources = true) {
+        ///* init - path *///
         .scr-awesome-init();
         .scr-foundation-init();
         .scr-glyphicon-init();
-        .scr-class(awesome, @icon-awesome-prefix);
-        .scr-class(foundation, @icon-foundation-prefix);
-        .scr-class(glyphicons, @icon-glyphicons-prefix);
+        ///* init - class - icon *///
+        .scr-class-awesome-init();
+        .scr-class-foundation-init();
+        .scr-class-glyphicon-init();
     }
     & when not (@icon-multiple-sources = true) {
         .scr-icon-init-path(@icon-default-font);
@@ -63,12 +65,45 @@
     .scr-icon-init-path(foundation);
 }
 //
+.scr-class-awesome-init() {
+    & when (@icon-shared-prefix = true) {
+        @general-css-prefix: ~'@{icon-general-prefix}-@{fa-prefix}';
+        .scr-class(awesome, @general-css-prefix);
+    }
+
+    & when not (@icon-shared-prefix = true) {
+        .scr-class(awesome, @fa-prefix);
+    }
+}
+
+.scr-class-foundation-init() {
+    & when (@icon-shared-prefix = true) {
+        @general-css-prefix: ~'@{icon-general-prefix}-@{fi-prefix}';
+        .scr-class(foundation, @general-css-prefix);
+    }
+
+    & when not (@icon-shared-prefix = true) {
+        .scr-class(foundation, @fi-prefix);
+    }
+}
+
+.scr-class-glyphicon-init() {
+    & when (@icon-shared-prefix = true) {
+        @general-css-prefix: ~'@{icon-general-prefix}-@{gi-prefix}';
+        .scr-class(glyphicons, @general-css-prefix);
+    }
+
+    & when not (@icon-shared-prefix = true) {
+        .scr-class(glyphicons, @gi-prefix);
+    }
+}
+ 
 .scr-icon-init-path(@font) {
     & when (@font = foundation) {
-        @family: @fu-family;
-        @version: @fu-version;
-        @name: @fu-name;
-        @embedded: @fu-embedded;
+        @family: @fi-family;
+        @version: @fi-version;
+        @name: @fi-name;
+        @embedded: @fi-embedded;
         .font-face(@family, @version, @icon-path, @name, @icon-embedded, @embedded);
     }
 

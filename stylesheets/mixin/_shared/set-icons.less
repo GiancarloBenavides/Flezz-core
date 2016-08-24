@@ -14,27 +14,29 @@
 ///******************************************/
 ///* 1 */
 ///* include one sources */
-@icon-multiple-sources:     false;
+@icon-multiple-sources:     true;
 @icon-default-font:         awesome;
-@icon-general-prefix:       fa;
 //
 ///* include multiple sources */
-@icon-awesome:      false;
-@icon-foundation:   true;
-@icon-glyphicons:   false;
+@icon-shared-prefix:        false;
+@icon-general-prefix:       icon;
 //
-@icon-awesome-prefix:       fa;
-@icon-foundation-prefix:    fu;
-@icon-glyphicons-prefix:    gi;
+@icon-awesome:              true;
+@icon-foundation:           true;
+@icon-glyphicons:           true;
+//
+@icon-awesome-selector:     ~'.fa';
+@icon-foundation-selector:  ~'[class^="fi"]';
+@icon-glyphicons-selector:  ~'[class^="gi"]';
 //
 ///* include icon class reference */
-@icon-class-reference:  true;
-@icon-class-style:      boostrap;
-@icon-class-large:      false;
+@icon-class-reference:      true;
+@icon-class-style:          boostrap;
+@icon-class-large:          false;
 //
 ///* icon options */
 @icon-embedded:         true;
-@icon-line-height: 1;       // normal 1.428571429; // 20/14
+@icon-line-height:         1;       // normal 1.428571429; // 20/14
 //
 @icon-default-color:                rgb(145, 145, 145);
 @icon-default-background-color:     rgb(238, 238, 238)  ;
