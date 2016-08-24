@@ -1,9 +1,9 @@
 ///******************************************/
 ///*          flezz framework 1.0           */
 ///******************************************/
-///*  Name: icons
+///*  Name: icon source
 ///*  Version: 0.2.9
-///*  Description: description icons
+///*  Description: description icon source
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
 ///*  License: GNU General Public License v2 or later
@@ -28,7 +28,7 @@
 @import 'source-glyphicons.less';
 //
 ///* 1 *//* LOCAL VARIABLES *///
-.scr-local-var() {
+.icon-source-local-var() {
 
 }
 ///* 2 *//* ROAD MAP */
@@ -37,7 +37,7 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE COMPONENT */
-.scr-icon-init() {
+.icn-source-init() {
     & when (@icon-multiple-sources = true) {
         ///* init - path *///
         .scr-awesome-init();
@@ -129,7 +129,8 @@
 //
 ///* 6 *//* INITIALIZED PATTERNS */
 .scr-init(){
-    .scr-icon-init();
+    .icon-source-local-var();
+    .icn-source-init();
 }
 //
 /* sources ----------- [ + ] */@state: OK;

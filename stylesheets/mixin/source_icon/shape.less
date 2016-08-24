@@ -31,7 +31,10 @@
 //
 ///* 1 *//* LOCAL VARIABLES *///
 .shape-local-var(){
-
+    @dfl-family:        @icon-default-font;
+    @dfl-color:         inherit;
+    @dfl-bck:           inherit;
+    @dfl-border:        inherit;
 }
 ///* 2 *//* ROAD MAP */
 // --------------------------------------------------
@@ -39,7 +42,21 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE COMPONENT */
+.icon-main(@opc-prefix: @icon-general-prefix; @opc-color: inherit; @font-size: inherit) {
+    .shape-local-var();
+    .shp-selector(@icon-awesome, @icon-foundation, @icon-glyphicons);
+
+    @{selector} {
+        .shp-icon(@opc-color; inherit; inherit; @font-size; true; none; none);
+    }
+
+    @{before} {
+        .shp-icon-before();
+    }
+}
+///* 4 *//* CONFIG MIXIN */
 //
+///* icon - mixin by main class *///
 .shp-icon(@color; @bck-color; @border-color; @size:1; @inline: true; @fixed: true; @shape: none; @float: none;) {
     
     ///* icon - position *///
@@ -66,8 +83,6 @@
     text-rendering: auto;                   // optimizelegibility throws things off #1094
     margin-left:2px;
 }
-//
-///* 4 *//* CONFIG MIXIN */
 //
 ///* icon - position *///
 .shp-display(@opc-inline) when (@opc-inline = true) {
@@ -102,7 +117,7 @@
 }
 //
 ///* icon - form *///
-.shp-size(@opc-size) when not (@opc-size = inerit) {
+.shp-size(@opc-size) when not (@opc-size = inherit) {
     font-size: @opc-size*1em;
 }
 //
@@ -129,12 +144,12 @@
     box-shadow: 0 0 0 1px #000;
 }
 //
-.shp-color(@opc-color) when not (@opc-color = inerit) {
+.shp-color(@opc-color) when not (@opc-color = inherit) {
     color: @opc-color;
 }
 //
 ///* icon - selector *///
-.shp-selector(true,true,true){@selector: ~'@{icon-awesome-selector},@{icon-foundation-selector},@{icon-glyphicons-selector}';@before: ~'@{icon-awesome-selector:before},@{icon-foundation-selector}:before,@{icon-glyphicons-selector}:before';}
+.shp-selector(true,true,true){@selector: ~'@{icon-awesome-selector},@{icon-foundation-selector},@{icon-glyphicons-selector}';@before: ~'@{icon-awesome-selector}:before,@{icon-foundation-selector}:before,@{icon-glyphicons-selector}:before';}
 .shp-selector(true,true,false){@selector: ~'@{icon-awesome-selector},@{icon-foundation-selector}';@before: ~'@{icon-awesome-selector}:before,@{icon-foundation-selector}:before';}
 .shp-selector(true,false,true){@selector: ~'@{icon-awesome-selector},@{icon-glyphicons-selector}';@before: ~'@{icon-awesome-selector}:before,@{icon-glyphicons-selector}:before';}
 .shp-selector(false,true,true){@selector: ~'@{icon-foundation-selector},@{icon-glyphicons-selector}';@before: ~'@{icon-foundation-selector}:before,@{icon-glyphicons-selector}:before';}
@@ -143,16 +158,15 @@
 .shp-selector(false,false,true){@selector: ~'@{icon-glyphicons-selector}';@before: ~'@{icon-glyphicons-selector}:before';}
 //
 ///* 5 *//* PRECONFIGURED PATTERNS */
-.shape-main(@opc-prefix: @icon-general-prefix; @opc-color: inerit; @font-size: inerit) {
+//
+///* icon - modifier *///
+.icon-modify-shape(@opc-bck-color; @opc-border-color; @opc-shape) {
     .shape-local-var();
     .shp-selector(@icon-awesome, @icon-foundation, @icon-glyphicons);
+    @selector-main: @selector;
 
-    @{selector} {
-        .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: @font-size; @inline: true; @shape: none; @float: none);
-    }
-
-    @{before} {
-        .shp-icon-before();
+    & @{selector-main} {
+        .shp-shape(@opc-bck-color, @opc-border-color, @opc-shape);
     }
 }
 
@@ -188,7 +202,7 @@
 ///* 6 *//* INITIALIZED PATTERNS */
 .shape-init() {
     .shape-local-var();
-    .shape-main();
+    .icon-main();
     .shape-largue();
 }
 //
