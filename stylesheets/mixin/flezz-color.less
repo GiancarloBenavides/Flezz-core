@@ -191,6 +191,9 @@
     a[class~="bt-danger"], button[class*="danger"] {background-color: @danger; border-color: @danger}
     a[class~="bt-danger"]:hover, button[class*="danger"]:hover {background-color: darken(@danger, @dark-percent);}
 }
+.theme-init(){
+    .theme-color(@theme-initial);
+}
 //
 ///* 6 *//* INITIALIZED PATTERNS */
 .theme-color(@initial-theme) when (@initial-theme = dark) {

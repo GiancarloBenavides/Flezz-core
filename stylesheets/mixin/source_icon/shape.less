@@ -31,11 +31,7 @@
 //
 ///* 1 *//* LOCAL VARIABLES *///
 .shape-local-var(){
-    @dfl-family:        @icon-default-font;
-    @dfl-color:         @icon-default-color;
-    @dfl-bck:           @icon-default-background-color;
-    @dfl-border:        @icon-default-border-color;
-    @dfl-size:          @icon-default-size;
+
 }
 ///* 2 *//* ROAD MAP */
 // --------------------------------------------------
@@ -43,12 +39,13 @@
 // --------------------------------------------------
 //
 ///* 3 *//* BASE COMPONENT */
-.shp-icon(@color; @bck-color; @border-color; @size; @inline: true; @fixed: true; @shape: none; @float: none;) {
+//
+.shp-icon(@color; @bck-color; @border-color; @size:1; @inline: true; @fixed: true; @shape: none; @float: none;) {
     
     ///* icon - position *///
     .shp-display(@inline);
     .shp-float(@float);
-    .shp-fixed-width(@fixed);
+    .shp-fixed-width(@fixed, @shape);
     
     ///* icon - form *///
     .shp-size(@size);
@@ -58,16 +55,15 @@
 //
 .shp-icon-before() {
     .shp-font-family();
-    -moz-transform: translate(0, 0); // ensures no half-pixel rendering in firefox
+    -moz-transform: translate(0, 0);        // ensures no half-pixel rendering in firefox
     -ms-transform: translate(0, 0);
     -o-transform: translate(0, 0);
     -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-    //-moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);                                 
     .user-select();
     text-decoration: none;
-    text-transform: none;
-    text-rendering: auto; // optimizelegibility throws things off #1094
+    text-transform: none;                   //-moz-osx-font-smoothing: grayscale;
+    text-rendering: auto;                   // optimizelegibility throws things off #1094
     margin-left:2px;
 }
 //
@@ -81,6 +77,7 @@
 
 .shp-display(@opc-inline) when (@opc-inline = false) {
     display: block;
+    text-align: center;
 }
 
 .shp-fix-position() when (@icon-default-font = 'glyphicon') {
@@ -98,7 +95,7 @@
     margin: .2em 0 0 .2em;
 }
 //
-.shp-fixed-width(@fixed)when (@fixed = true)  {
+.shp-fixed-width(@fixed, @opc-shape)when (@fixed = true) and (@opc-shape = none)  {
     width: 1.1em;
     margin: 0 2px;
     text-align: left;
@@ -148,7 +145,7 @@
 ///* 5 *//* PRECONFIGURED PATTERNS */
 .shape-main(@opc-prefix: @icon-general-prefix; @opc-color: inerit; @font-size: inerit) {
     .shape-local-var();
-    .shp-selector(@icon-awesome,@icon-foundation,@icon-glyphicons);
+    .shp-selector(@icon-awesome, @icon-foundation, @icon-glyphicons);
 
     @{selector} {
         .shp-icon(@color: @opc-color; @bck-color: @dfl-bck; @border-color: @dfl-border; @size: @font-size; @inline: true; @shape: none; @float: none);
