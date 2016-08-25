@@ -43,10 +43,7 @@
 //
 ///* 3 *//* BASE COMPONENT */
 .icon-main(@opc-prefix: @icon-general-prefix; @opc-color: inherit; @font-size: inherit) when (@icon-multiple-sources = true) {
-    .shape-local-var();
-    .shp-selector(@icon-awesome, @icon-foundation, @icon-glyphicons);
-
-    .icon {
+    .icn-main {
         .shp-icon(@opc-color; inherit; inherit; @font-size; true; none; none);
 
         &:before {
@@ -54,13 +51,12 @@
         }
     }
 
-    .shp-fa(@icon-awesome);
-    .shp-fi(@icon-foundation);
-    .shp-gi(@icon-glyphicons);
+    .shp-expand-fa(@icon-awesome, before);
+    .shp-expand-fi(@icon-foundation, before);
+    .shp-expand-gi(@icon-glyphicons, before);
 }
 //
 .icon-main(@opc-prefix: @icon-general-prefix; @opc-color: inherit; @font-size: inherit) when not (@icon-multiple-sources = true) {
-    .shape-local-var();
 
     @{icon-default-prefix}{
         .shp-icon(@opc-color; inherit; inherit; @font-size; true; none; none);
@@ -99,6 +95,29 @@
     text-transform: none;                   //-moz-osx-font-smoothing: grayscale;
     text-rendering: auto;                   // optimizelegibility throws things off #1094
     margin-left:2px;
+}
+//
+///* icon - expand multiple sources *///
+.shp-expand-fa(true, before) when (@icon-multiple-sources = true){
+    @{icon-awesome-selector}:extend(.icn-main){}
+    @{icon-awesome-selector}:before :extend(.icn-main:before){}
+}
+.shp-expand-fi(true, before) when (@icon-multiple-sources = true){
+    @{icon-foundation-selector}:extend(.icn-main){}
+    @{icon-foundation-selector}:before :extend(.icn-main:before){}
+}
+.shp-expand-gi(true, before) when (@icon-multiple-sources = true){
+    @{icon-glyphicons-selector}:extend(.icn-main){}
+    @{icon-glyphicons-selector}:before :extend(.icn-main:before){}
+}
+.shp-expand-fa(true) when (@icon-multiple-sources = true){
+    @{icon-awesome-selector}:extend(.icn-main){}
+}
+.shp-expand-fi(true) when (@icon-multiple-sources = true){
+    @{icon-foundation-selector}:extend(.icn-main){}
+}
+.shp-expand-gi(true) when (@icon-multiple-sources = true){
+    @{icon-glyphicons-selector}:extend(.icn-main){}
 }
 //
 ///* icon - position *///
@@ -165,26 +184,18 @@
     color: @opc-color;
 }
 //
-///* icon - selector *///
-.shp-selector(true,true,true){@selector: ~'@{icon-awesome-selector},@{icon-foundation-selector},@{icon-glyphicons-selector}';@before: ~'@{icon-awesome-selector}:before,@{icon-foundation-selector}:before,@{icon-glyphicons-selector}:before';}
-.shp-selector(true,true,false){@selector: ~'@{icon-awesome-selector},@{icon-foundation-selector}';@before: ~'@{icon-awesome-selector}:before,@{icon-foundation-selector}:before';}
-.shp-selector(true,false,true){@selector: ~'@{icon-awesome-selector},@{icon-glyphicons-selector}';@before: ~'@{icon-awesome-selector}:before,@{icon-glyphicons-selector}:before';}
-.shp-selector(false,true,true){@selector: ~'@{icon-foundation-selector},@{icon-glyphicons-selector}';@before: ~'@{icon-foundation-selector}:before,@{icon-glyphicons-selector}:before';}
-.shp-selector(true,false,false){@selector: ~'@{icon-awesome-selector}';@before: ~'@{icon-awesome-selector}:before';}
-.shp-selector(false,true,false){@selector: ~'@{icon-foundation-selector}';@before: ~'@{icon-foundation-selector}:before';}
-.shp-selector(false,false,true){@selector: ~'@{icon-glyphicons-selector}';@before: ~'@{icon-glyphicons-selector}:before';}
-//
 ///* 5 *//* PRECONFIGURED PATTERNS */
 //
 ///* icon - modifier *///
 .icon-modify-shape(@opc-bck-color; @opc-border-color; @opc-shape) {
-    .shape-local-var();
-    .shp-selector(@icon-awesome, @icon-foundation, @icon-glyphicons);
-    @selector-main: @selector;
 
-    & @{selector-main} {
+    & .icn-main {
         .shp-shape(@opc-bck-color, @opc-border-color, @opc-shape);
     }
+
+    //.shp-expand-fa(@icon-awesome);
+    //.shp-expand-fi(@icon-foundation);
+    //.shp-expand-gi(@icon-glyphicons);
 }
 
 .shape-largue(@opc-prefix: @icon-general-prefix; @opc-color: inerit) when (@icon-class-large = true) {
