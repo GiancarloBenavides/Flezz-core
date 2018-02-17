@@ -8,22 +8,24 @@
 ///*  URI: http://www.zerez.org
 ///*  License: GNU General Public License v2 or later
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
-///*  Tags: mixin, css.
+///*  Tags: layout, mixin, css.
+///******************************************/
+///*  Requiere: none.
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. Dependencies.
+///*  1. Config files.
+///*  2. Initiate module.
 ///******************************************/
-///* Dependencies */
-@import 'layout_frames/_config.layout.less';
-//
-
-//
+///* 1 *//* CONFIG FILES */
+@import 'layout_template/_config.layout.less';
+///* 2 *//* INITIATE MODULE */
 .flezz-layout-init() {
     .layout-local-var();
     .layout-init();
 }
-/* add flezz layout - [ OK ] */@state: OK;
+//
+/* add flezz layout - [ OK ] */@state:OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

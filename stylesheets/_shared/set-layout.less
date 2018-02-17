@@ -18,6 +18,9 @@
 ///*  6. Layout sizes.
 ///*  7. Breakpoints.
 ///*  8. Gutter breakpoints.
+///*  9. Flezz asset path.
+///*  10. Folder path from css file.
+///*  11. Files path.
 ///******************************************/
 ///* 1 *//* GENERAL FLAGS *///
 @theme-initial-dark:         true;
@@ -81,6 +84,26 @@
 @sm-gutter:    10px;     ///* smartphones *///
 @md-gutter:    16px;     ///* big smartphones, tablet *///
 @lg-gutter:    20px;     ///* hi-res laptops and desktops *///
+//
+///* 9 *//* FLEZZ ASSET PATH *///
+@font-path:     "../../@assets/fonts";
+@icon-path:     "../../@assets/icons";
+///* 10 *//* FOLDER PATH FROM CSS FILE *///
+@path-base:         '../../Content/';
+@path-css:          'css/';
+@path-images:       'img/';
+@path-font:         'fonts/';
+@path-icon:         'icons/';
+//
+@path-avatar:         '@{path-images}avatar/';
+@path-background:     '@{path-images}background/';
+@path-logos:          '@{path-images}logos/';
+@path-mask:           '@{path-images}mask/';
+@path-sprite:         '@{path-images}sprite/';
+///* 11 *//* FILES PATH *///
+@logo-large: url("@{path-logos}logo_large.png") no-repeat;
+@logo-small: url("@{path-logos}logo_small.png") no-repeat;
+@background: url("@{path-background}pointback.svg") #024;
 //
 /* layout ------------ [ + ] */@state: OK;
 ///******************************************/

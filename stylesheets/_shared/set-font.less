@@ -10,11 +10,12 @@
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. General flags.
-///*  2. Default Fonts.
-///*  3. Font families.
+///*  1. General font flags.
+///*  2. General icon flags.
+///*  3. Default fonts.
+///*  4. Font families.
 ///******************************************/
-///* 1 *//* GENERAL FLAGS *///
+///* 1 *//* GENERAL FONT FLAGS *///
 @star-up-font: @font-regular;
 //
 @family-style: normal;
@@ -27,6 +28,33 @@
 @SegoeUI:           false;
 @RobotoSlab:        false;
 @Rokkitt:           false;
+//
+///* 1 *//* GENERAL ICON FLAGS *///
+///* include one sources */
+@icon-multiple-sources:        true;
+@icon-default-font:         awesome;
+@icon-default-prefix:            fa;
+//
+///* include multiple sources */
+@icon-shared-prefix:        false;
+@icon-general-prefix:       icon;
+//
+@icon-awesome:              true;
+@icon-foundation:           true;
+@icon-glyphicons:           true;
+//
+@icon-awesome-selector:     ~'.fa';
+@icon-foundation-selector:  ~'[class^="fi"]';
+@icon-glyphicons-selector:  ~'[class^="gi"]';
+//
+///* include icon class reference */
+@icon-class-reference:      true;
+@icon-class-style:          boostrap;
+@icon-class-large:          false;
+//
+///* icon options */
+@icon-embedded:         true;
+@icon-line-height:         1;       // normal 1.428571429; // 20/14
 //
 ///* 2 *//* DEFAULT FONTS */
 @font-Light: @OpenSansLight;
