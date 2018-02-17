@@ -10,29 +10,38 @@
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. User color.
-///*  2. zerez color.
-///*  3. zerez gray scale.
-///*  4. boostrap button color.
-///*  5. fundation button color.
-///*  6. Metro desing (Windows).
+///*  1. General flags.
+///*  2. Base color.
+///*  3. zerez color.
+///*  4. zerez gray scale.
+///*  5. boostrap button color.
+///*  6. fundation button color.
 ///*  7. Material desing (Android).
-///*  8. Ios desing (Apple).
-///*  9. Social color.
-///* 10. Calculating colors.
+///*  8. Metro desing (Windows).
+///*  9. Ios desing (Apple).
+///* 10. Social color.
+///* 11. Calculating colors.
 ///******************************************/
-///* 1 */
+//
+///* 1 *//* GENERAL FLAGS *///
 @theme-initial:        dark;
-//* main colors *//
-@dark-body:          rgb(0,32,68);         //dark body color        [Background]() ()
-@dark-panel:         rgb(247,247,247);     //light panel color      [Cards/Dialogs](gray palette)
-@dark-accent:        rgb(0,143,206);       //contrast color         [Accent](500 palette)
-@theme-link:         @twitter-LinK;        //link-hover     
 //* transparencies colors *//
 @header-fade:           50%;   //50% black for background main header
 @font-fade:             75%;   //70% white for font body color
 @font-panel-fade:       70%;   //70% black for font panel color
 @font-nav-fade:         80%;   //70% black for font nav color
+//* action button colors *//
+@secondary-shift: 20%;   //20% Body color 
+@hover-shift:     30%;   //30% button color
+@focus-shift:     35%;   //35% button color
+@active-shift:    45%;   //45% button color
+//
+///* 2 *//* BASE COLOR *///
+//* main colors *//
+@dark-body:          rgb(0,32,68);         //dark body color        [Background]() ()
+@dark-panel:         rgb(247,247,247);     //light panel color      [Cards/Dialogs](gray palette)
+@dark-accent:        rgb(0,143,206);       //contrast color         [Accent](500 palette)
+@theme-link:         @twitter-LinK;        //link-hover     
 //* button colors *//
 @primary:     rgb(40,96,144);
 @success:     rgb(68,157,68);
@@ -43,13 +52,8 @@
 @caution:     rgb(246,180,1);
 @alert:       rgb(207,42,14);
 @default:     transparent;
-//* action button colors *//
-@secondary-shift: 20%;   //20% Body color 
-@hover-shift:     30%;   //30% button color
-@focus-shift:     35%;   //35% button color
-@active-shift:    45%;   //45% button color
 //
-///* 2 */
+///* 3 *//* ZEREZ COLOR *///
 @zerez-yellow: rgb(255,255,18);
 @zerez-orange: rgb(245,134,52);
 @zerez-blue: rgb(0,175,239);
@@ -60,7 +64,7 @@
 @zerez-gray-light: rgb(245,245,247);
 @zerez-purple: rgb(40,0,80);
 @zerez-blue-dark: rgb(26,29,80);
-///* 3 */
+///* 4 *//* ZEREZ GRAY SCALE *///
 @zerez-white: rgb(250,250,250);
 @zerez-gray05: rgb(244,244,244);
 @zerez-gray10: rgb(230,230,232);
@@ -71,7 +75,7 @@
 @zerez-gray80: rgb(51,51,64);
 @zerez-gray90: rgb(25,25,40);
 @zerez-black: rgb(10,10,15);
-///* 4 */
+///* 5 *//* BOOSTRAP COLOR *///
 @boostrap-default: rgb(255,255,255);
 @boostrap-primary: rgb(51,122,183);
 @boostrap-success: rgb(92,184,92);
@@ -79,14 +83,14 @@
 @boostrap-warning: rgb(240,173,78);
 @boostrap-danger: rgb(217,83,79);
 @boostrap-link: transparent;
-///* 5 */
+///* 6 *//* FUNDATION COLOR *///
 @fundation-default: rgb(0,140,186);
 @fundation-secondary: rgb(231,231,231);
 @fundation-success: rgb(67,172,106);
 @fundation-info: rgb(160,211,232);
 @fundation-disabled: rgb(0,140,186);
 @fundation-alert: rgb(240,65,36);
-///* 6 */
+///* 7 *//* MATERIAL DESIGN COLOR *///
 @material-blue: rgb(51,181,229);
 @material-blue-dark: rgb(0,153,204);
 @material-purple: rgb(170,102,204);
@@ -97,7 +101,7 @@
 @material-orange-dark: rgb(255,136,0);
 @material-red: rgb(255,68,68);
 @material-red-dark: rgb(204,0,0);
-///* 7 */
+///* 8 *//* METRO DESIGN COLOR *///
 @tile-blue: rgb(27,161,226);
 @tile-brown: rgb(160,80,0);
 @tile-green: rgb(51,153,51);
@@ -108,7 +112,7 @@
 @tile-purple: rgb(162,0,255);
 @tile-red: rgb(229,20,0);
 @tile-teal: rgb(0,171,169);
-///* 8 */
+///* 9 *//* APPLE COLOR *///
 @ios-blue: rgb(90,200,250);
 @ios-blue-dark: rgb(0,122,255);
 @ios-purple: rgb(255,45,85);
@@ -117,7 +121,7 @@
 @ios-green-dark: rgb(142,142,147);
 @ios-orange: rgb(255,204,0);
 @ios-orange-dark: rgb(255,149,0);
-///* 9 */
+///* 10 *//* SOCIAL COLOR *///
 @facebook-blue: rgb(59,89,152);
 @facebook-blue-light: rgb(139,157,195);
 @facebook-gray: rgb(223,227,238);
@@ -132,7 +136,7 @@
 @google-gray: rgb(210,210,210);
 @google-gray-light: rgb(241,241,241);
 //
-///* 10 */
+///* 11 *//* CALCULATING COLORS *///
 //* dark theme *//
 @dark-font-color:       white;
 @dark-header:           fade(darken(@dark-nav,14%),@header-fade);       //fade(saturate(spin(@dark-body, -10), 10%), @header-fade);
