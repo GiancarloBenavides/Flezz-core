@@ -1,8 +1,8 @@
 ///******************************************/
 ///*          flezz framework 1.0           */
 ///******************************************/
-///*  Name: equalize
-///*  Version: 0.2.7
+///*  Name: config layout
+///*  Version: 0.4.1
 ///*  Description: equal properties width css mixin.
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
@@ -10,7 +10,13 @@
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ///*  Tags: mixin, plugin, css.
 ///******************************************/
-///* Dependencies */
+///*  	Content
+///*
+///*  1. Included modules.
+///*  2. Local variables.
+///*  3. Initialized modules
+///******************************************/
+///* 1 *//* INCLUDED MODULES *///
 @import 'normalize.less';
 @import 'start-up.less';
 //@import 'scroll.less';
@@ -18,17 +24,18 @@
 @import 'header.less';
 @import 'nav.less';
 @import 'rwd.less';
-//
+///* 2 *//* LOCAL VARIABLES *///
 .layout-local-var() {
     
 }
-//
+///* 3 *//* INITIALIZED MODULES *
 .layout-init(){
     .start-init();
     .wrap-init();
     //.rwd-init();
 }
-/* layout --------- [ FULL ] */ @state: OK;
+//
+/* layout --------- [ FULL ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

@@ -1,8 +1,8 @@
 ///******************************************/
 ///*          flezz framework 1.0           */
 ///******************************************/
-///*  Name: config component mixin
-///*  Version: 0.1.0
+///*  Name: config component ui
+///*  Version: 0.4.1
 ///*  Description: description config component mixin
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
@@ -13,8 +13,8 @@
 ///*  	Content
 ///*
 ///*  1. Included modules.
-///*  2. statements.
-///*  3. initialized modules
+///*  2. Local variables.
+///*  3. Initialized modules
 ///******************************************/
 ///* 1 *//* INCLUDED MODULES *///
 @import 'buttons.less';
@@ -24,19 +24,12 @@
 @import 'inputs.less';
 @import 'tiles.less';
 @import 'popup.less';
-//
-///* 2 *//* STATEMENTS *///
-//
-///* Global variables */
-
-//
-///* local variables */
+///* 2 *//* LOCAL VARIABLES *///
 .ui-local-var() {
     @link-bar-decoration: true;
     @header-fixed: true;
     @header-height: 50px;
 }
-//
 ///* 3 *//* INITIALIZED MODULES */
 .ui-init() {
     .ui-local-var();
@@ -46,7 +39,8 @@
     .input-init();
     .popup-init();
 }
-/* ui ------------- [ FULL ] */ @state: OK;
+//
+/* ui ------------- [ FULL ] */@state:OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

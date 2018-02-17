@@ -1,8 +1,8 @@
 ///******************************************/
 ///*          flezz framework 1.0           */
 ///******************************************/
-///*  Name: color constants
-///*  Version: 0.2.7
+///*  Name: settings layout
+///*  Version: 0.3.1
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
 ///*  License: GNU General Public License v2 or later
@@ -12,6 +12,12 @@
 ///*
 ///*  1. General flags.
 ///*  2. Scroll.
+///*  3. Base sizes.
+///*  4. Fonts sizes.
+///*  5. Head sizes.
+///*  6. Layout sizes.
+///*  7. Breakpoints.
+///*  8. Gutter breakpoints.
 ///******************************************/
 ///* 1 *//* GENERAL FLAGS *///
 @theme-initial-dark:         true;
@@ -33,6 +39,50 @@
 @scroll-content-padding: 20px;
 @scroll-bar-width: 7px;
 @scroll-bar-min-width: 4px;
+//
+///* 3 *//* BASE SIZES *///
+@font-root:         16px;
+@base:              unit(@font-root);
+@line-height:       1.25;
+@scroll-width:      23px;
+//
+///* 4 *//*  FONT SIZE BREAKPOINTS *///
+// NOTA: ideal range of characters per line [40-80]
+@sm-font:    (unit(15px/@font-root, em));
+@md-font:    (unit(16px/@font-root, em));       ///* smartphones *///
+@lg-font:    (unit(17px/@font-root, em));       ///* big smartphones, tablet *///
+@xl-font:    (unit(18px/@font-root, em));       ///* hi-res laptops and desktops *///
+@wd-font:    (unit(19px/@font-root, em));       ///* hi-res desktops widescreen *///
+//
+///* 5 *//* HTML HEAD TAG SIZES *///
+@head1: unit(32px/@font-root, rem);
+@head2: unit(24px/@font-root, rem); 
+@head3: unit(18px/@font-root, rem);
+@head4: unit(16px/@font-root, rem);
+@head5: unit(14px/@font-root, rem);
+@head6: unit(12px/@font-root, rem);
+//
+///* 6 *//* LAYOUT *///
+@main-header-height:        unit(75px/@font-root, rem);
+@main-footer-height:        unit(25px/@font-root, rem);
+@right-panel-width:         unit(44px/@font-root, rem);
+@left-panel-width:         unit(100px/@font-root, rem);
+@panel-max-width:          unit(512px/@font-root, rem);
+//
+///* 7 *//* BREAKPOINTS  *///
+@xs:        (unit(384/@base, rem));   ///* mini-smartphones *///
+@sm:        (unit(448/@base, rem));   ///* smartphones, e-readers, smaller tablets *///
+@md:        (unit(640/@base, rem));   ///* big smartphones, portrait e-readers, tablets *///
+@lg:        (unit(960/@base, rem));   ///* landscape tablet, lo-res laptops ands desktops *///
+@xl:       (unit(1024/@base, rem));   ///* big landscape tablets, laptops, and desktops *///
+@wd:       (unit(1280/@base, rem));   ///* hi-res laptops and desktops widescreen *///
+//
+///* 8 *//* GUTTER BREAKPOINTS  *///
+@sm-gutter:    10px;     ///* smartphones *///
+@md-gutter:    16px;     ///* big smartphones, tablet *///
+@lg-gutter:    20px;     ///* hi-res laptops and desktops *///
+//
+/* layout ------------ [ + ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/
