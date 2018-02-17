@@ -12,30 +12,31 @@
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. Gray scale.
-///*  2. Button Default palette.
-///*  3. Social color.
-///*  4. Metro desing (Windows).
-///*  5. Material desing (Android).
-///*  6. Ios desing (Apple).
-///*  7. Zerez desing.
-///*  8. Flezz color theme.
+///*  1. Config modules.
+///*  2. Road map.
+///*  3. Base Modules.
+///*  4. Config mixin.
+///*  5. preconfigured patterns.
+///*  6. initialized patterns.
 ///******************************************/
-//
 ///* Dependencies */
 @import '_shared/_shared.less';
-///* CONFIG COMPONENT VARIABLES *///
+///* 1 *//* CONFIG MODULES VARIABLES *///
 ///* global variables */
+@color-theme: true; 
+@color-theme-mode: light;
+
+///* setting options */
 @brightness-cutoff: 44%;
 @font-contrast: 40%;
 @font-title-icrement: 10%;
-///* setting options */
+//
 @primary-header-background: @zerez-blue-dark;
 @primary-body-background: @zerez-gray-light;
 @secondary-header-background: @zerez-purple;
 @secondary-body-background:  @zerez-gray-light;
-@footer-background: @zerez-gray;
 @sidebar-background: @zerez-gray;
+@footer-background: @zerez-gray;
 //
 ///* local variables */
 @color-secundary: @zerez-blue;
@@ -44,16 +45,18 @@
 @color-body-weight: 10%;
 //
 ///* local statements */
-//.fontPrimaryColor();
-//.fontSecondaryColor();
-//.fontFooterColor();
-///* ROAD MAP *///
+
+///* 2 *//* ROAD MAP */
 @theme-darken: true;
 @theme-darken: 0%;
 @theme-opacity: true;
 //
-
-///* 8 */
+///* 3 *//* BASE MODULES */
+.fontPrimaryColor();
+.fontSecondaryColor();
+.fontFooterColor();
+//
+///* 4 *//* CONFIG MIXIN */
 ///* PRYMARY COLORS *///
 ///* header luminoso *///
 .fontPrimaryColor() when (luma(@primary-header-background) >= @brightness-cutoff) {
@@ -149,19 +152,8 @@
     @footer-subtitle-color: lighten(@footer-font-color,@font-title-icrement);   
     @footer-title-color: lighten(@footer-font-color,(2*@font-title-icrement));
 }
-///* 3 *//* BASE MODULES */
-
-//
-///* 4 *//* CONFIG MIXIN */
-
 //
 ///* 5 *//* PRECONFIGURED PATTERNS */
-.font-color(){
-    .fontPrimaryColor();
-    .fontSecondaryColor();
-    .fontFooterColor();   
-}
-
 .tiles-global-color(){
     a[class~="tl-white"] {background-color: @zerez-white;}
     a[class~="tl-black"] {background-color: @zerez-black;}
@@ -191,12 +183,17 @@
     a[class~="bt-danger"], button[class*="danger"] {background-color: @danger; border-color: @danger}
     a[class~="bt-danger"]:hover, button[class*="danger"]:hover {background-color: darken(@danger, @dark-percent);}
 }
-.theme-init(){
+.theme-init(@theme) when (@theme= true) {
     .theme-color(@theme-initial);
+}
+.theme-init(@theme) when (@theme = false) {
+    .fontPrimaryColor();
+    .fontSecondaryColor();
+    .fontFooterColor();   
 }
 //
 ///* 6 *//* INITIALIZED PATTERNS */
-.theme-color(@initial-theme) when (@initial-theme = dark) {
+.theme-color(@color-theme-mode) when (@color-theme-mode = dark) {
     @theme-button-color:@dark-font-color;
     @theme-background: @dark-body;
     @theme-panel: @dark-panel;
@@ -217,8 +214,7 @@
     @theme-shadow-outset: @shadow-darken;
     @theme-link-hover:@link-lighten;
 }
-
-.theme-color(@initial-theme) when (@initial-theme = light) {
+.theme-color(@color-theme-mode) when (@color-theme-mode = light) {
     @theme-button-color:@light-font-color;
     @theme-background: @light-body;
     @theme-panel: @light-panel;
@@ -239,13 +235,11 @@
     @theme-shadow-outset: @shadow-darken;
     @theme-link-hover:@link-darken;
 }
-
 ///* Shorthand - Initialize Color *///
-.flezz-color-init(@option-color) {
-    .font-color();
+.flezz-color-init() {
     .tiles-global-color();
     .button-global-color();
-    .theme-color(@option-color);
+    .theme-init(@color-theme);
 }
 //
 /* add flezz color -- [ OK ] */@state: OK;

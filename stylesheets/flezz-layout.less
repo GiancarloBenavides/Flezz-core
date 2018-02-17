@@ -1,37 +1,29 @@
 ///******************************************/
 ///*          flezz framework 1.0           */
 ///******************************************/
-///*  Name: settings component
-///*  Version: 0.1.0
-///*  Description: variables config component
+///*  Name: ui
+///*  Version: 0.2.7
+///*  Description: Global ui.
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
 ///*  License: GNU General Public License v2 or later
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
-///*  Tags: mixin, plugin, css.
+///*  Tags: mixin, css.
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. global variables module.
+///*  1. Dependencies.
 ///******************************************/
-///* PATH */
-//
 ///* Dependencies */
+@import 'layout_frames/_config.layout.less';
 //
-///* 1 *//* CONFIG VARIABLES *///
+
 //
-///* Gallery */
-@gallery: true;
-@carousel: false;
-@tabs: false;
-//
-///* Form */
-@form-button: false;
-@form-label: false;
-@form-imput: false;
-@form-switch: false;
-@form-slider: false;
-//
+.flezz-layout-init() {
+    .layout-local-var();
+    .layout-init();
+}
+/* add flezz layout - [ OK ] */@state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

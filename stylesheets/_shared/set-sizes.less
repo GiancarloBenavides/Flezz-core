@@ -9,39 +9,51 @@
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ///******************************************/
 ///*              GLOBALES
+///*
+///*  1. Base Sizes.
+///*  2. Breakpoints.
+///*  3. Gutter.
+///*  4. Fonts.
+///*  5. Head.
+///*  6. Layout.
 ///******************************************/
 //
-///* 2 *//* font root - html *///
+///* 1 *//* BASE SIZES *///
 @font-root:         16px;
 @base:              unit(@font-root);
 @line-height:       1.25;
 @scroll-width:      23px;
-///* 3 *//* breakpoints *///
+//
+///* 2 *//* BREAKPOINTS  *///
 @xs:        (unit(384/@base, rem));   ///* mini-smartphones *///
 @sm:        (unit(448/@base, rem));   ///* smartphones, e-readers, smaller tablets *///
 @md:        (unit(640/@base, rem));   ///* big smartphones, portrait e-readers, tablets *///
 @lg:        (unit(960/@base, rem));   ///* landscape tablet, lo-res laptops ands desktops *///
 @xl:       (unit(1024/@base, rem));   ///* big landscape tablets, laptops, and desktops *///
 @wd:       (unit(1280/@base, rem));   ///* hi-res laptops and desktops widescreen *///
-///* 3 *//* gutter breakpoints *///
+//
+///* 3 *//* GUTTER BREAKPOINTS  *///
 @sm-gutter:    10px;     ///* smartphones *///
 @md-gutter:    16px;     ///* big smartphones, tablet *///
 @lg-gutter:    20px;     ///* hi-res laptops and desktops *///
-///* 3 *//* root <html> font size breakpoints *///
+//
+///* 4 *//*  FONT SIZE BREAKPOINTS *///
 // NOTA: ideal range of characters per line [40-80]
 @sm-font:    (unit(15px/@font-root, em));
 @md-font:    (unit(16px/@font-root, em));       ///* smartphones *///
 @lg-font:    (unit(17px/@font-root, em));       ///* big smartphones, tablet *///
 @xl-font:    (unit(18px/@font-root, em));       ///* hi-res laptops and desktops *///
 @wd-font:    (unit(19px/@font-root, em));       ///* hi-res desktops widescreen *///
-///* 4 *//* head sizes *///
+//
+///* 5 *//* HTML HEAD TAG SIZES *///
 @head1: unit(32px/@font-root, rem);
 @head2: unit(24px/@font-root, rem); 
 @head3: unit(18px/@font-root, rem);
 @head4: unit(16px/@font-root, rem);
 @head5: unit(14px/@font-root, rem);
 @head6: unit(12px/@font-root, rem);
-///* 5 *//* general sizes *///
+//
+///* 6 *//* LAYOUT *///
 @main-header-height:        unit(75px/@font-root, rem);
 @main-footer-height:        unit(25px/@font-root, rem);
 @right-panel-width:         unit(44px/@font-root, rem);

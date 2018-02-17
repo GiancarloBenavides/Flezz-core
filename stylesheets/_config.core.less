@@ -1,32 +1,30 @@
 ///******************************************/
 ///*          flezz framework 1.0           */
 ///******************************************/
-///*  Name: mixin
-///*  Version: 1.0
-///*  Description: Global Mixin.
+///*  Name: config core
+///*  Version: 3.2.1
+///*  Description: core config
 ///*  Author: Giancarlo Ortiz.
 ///*  URI: http://www.zerez.org
 ///*  License: GNU General Public License v2 or later
 ///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
-///*  Tags: mixin, css.
+///*  Tags: flezz, normalize, less, mixin, css.
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. Declarations.
-///*  2. Custom icons (Zicon).
-///*  3. Others icons.
+///*  1. color settings.
+///*  2. font settings.
+///*  3. icon settings.
+///*  4. mixin settings.
 ///******************************************/
-///* Path */
-@baseline-path: "mixin";
-@theme-path: "_themes";
-@theme-theme: "_default";
-//
 ///* Dependencies */
-@import '@{baseline-path}/_config.core.less';
-///* Theme */
-@import '@{theme-path}/@{theme-theme}.less';
+@import 'flezz-color.less';
+@import 'flezz-font.less';
+@import 'flezz-icon.less';
+@import 'flezz-img.less';
+@import 'flezz-layout.less';
+@import 'flezz-ui.less';
 //
-/* include flezz ---- [ OK ] */ @state: OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/
