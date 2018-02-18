@@ -12,28 +12,26 @@
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. Config modules.
+///*  1. Included modules.
+///*  1. Local Variables.
 ///*  2. Road map.
 ///*  3. Base Modules.
 ///*  4. Config mixin.
 ///*  5. preconfigured patterns.
 ///*  6. initialized patterns.
 ///******************************************/
-///* Dependencies */
+///* 1 *//* INCLUDED MODULES *///
 @import '../_shared/_shared.less';
-//
-///* 1 *//* CONFIG MODULES VARIABLES *///
-//
-///* global variables */
-
-///* local variables *///
-//
-///* 2 *//* ROAD MAP */
+///* 2 *//* LOCAL VARIABLES *///
+.font-local-var() {
+    
+}
+///* 3 *//* ROAD MAP */
 // --------------------------------------------------
 
 // --------------------------------------------------
 //
-///* 3 *//* BASE MODULES */
+///* 4 *//* BASE MODULES */
 .fnt-family() when (@OpenSans = true) {
     .fnt-OpenSans(@font-path);
 }
@@ -58,7 +56,7 @@
     .fnt-RobotoSlab(@font-path);
 }
 //
-///* 4 *//* CONFIG MIXIN */
+///* 5 *//* CONFIG MIXIN */
 //
 ///*  FONT SANS SERIF (Helvetica, Verdana) *///
 .fnt-OpenSans (@opc-font-path) when (@Font-Embedded = true) {
@@ -247,16 +245,13 @@
 }
 
 //
-///* 5 *//* PRECONFIGURED PATTERNS */
+///* 6 *//* PRECONFIGURED PATTERNS */
 .font-family(){
     .fnt-family(); 
 }
 //
-///* 6 *//* INITIALIZED PATTERNS */
-.flezz-font-init () {
-    .font-family ();
-}
-//
+///* 7 *//* INITIALIZED PATTERNS */
+///* This component does not initialize modules *///
 /* font -------------- [ + ] */@state:OK;
 ///******************************************/
 ///*  	FIN
