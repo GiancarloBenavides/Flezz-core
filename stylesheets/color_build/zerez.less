@@ -183,17 +183,17 @@
     a[class~="bt-danger"], button[class*="danger"] {background-color: @danger; border-color: @danger}
     a[class~="bt-danger"]:hover, button[class*="danger"]:hover {background-color: darken(@danger, @dark-percent);}
 }
-.theme-init(@theme) when (@theme= true) {
-    .theme-color(@theme-initial);
+.theme-init() when (@color-theme= true) {
+    .theme-color();
 }
-.theme-init(@theme) when (@theme = false) {
+.theme-init() when (@color-theme = false) {
     .fontPrimaryColor();
     .fontSecondaryColor();
     .fontFooterColor();   
 }
 //
 ///* 6 *//* INITIALIZED PATTERNS */
-.theme-color(@color-theme-mode) when (@color-theme-mode = dark) {
+.theme-color() when (@theme-initial = dark) {
     @theme-button-color:@dark-font-color;
     @theme-background: @dark-body;
     @theme-panel: @dark-panel;
@@ -214,7 +214,7 @@
     @theme-shadow-outset: @shadow-darken;
     @theme-link-hover:@link-lighten;
 }
-.theme-color(@color-theme-mode) when (@color-theme-mode = light) {
+.theme-color() when (@theme-initial = light) {
     @theme-button-color:@light-font-color;
     @theme-background: @light-body;
     @theme-panel: @light-panel;
@@ -239,10 +239,10 @@
 .zerez-init() {
     .tiles-global-color();
     .button-global-color();
-    .theme-init(@color-theme);
+    .theme-init();
 }
 //
-/* add flezz color -- [ OK ] */@state: OK;
+/* zerez ------------- [ + ] */@state:OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

@@ -18,12 +18,13 @@
 ///******************************************/
 ///* 1 *//* INCLUDED MODULES *///
 @import 'buttons.less';
-@import 'dropdown.less';
-@import 'gallery.less';
-@import 'tabs.less';
+@import 'dropdowns.less';
+@import 'gallerys.less';
 @import 'inputs.less';
+@import 'popups.less';
+@import 'selects.less';
+@import 'tabs.less';
 @import 'tiles.less';
-@import 'popup.less';
 ///* 2 *//* LOCAL VARIABLES *///
 .ui-local-var() {
     @link-bar-decoration: true;
@@ -33,11 +34,11 @@
 ///* 3 *//* INITIALIZED MODULES */
 .ui-init() {
     .ui-local-var();
-    .button-init();
-    .dropdown-init();
+    .buttons-init();
+    .dropdowns-init();
+    .inputs-init();
+    .popups-init();
     .tabs-init();
-    .input-init();
-    .popup-init();
 }
 //
 /* ui ------------- [ FULL ] */@state:OK;

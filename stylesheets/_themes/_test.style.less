@@ -1,38 +1,51 @@
-///* Unconfig Core *///
+///******************************************/
+///*          flezz framework 1.0           */
+///******************************************/
+///*  Name: Template docs
+///*  Version: 0.2.0
+///*  Description: template test
+///*  Author: Giancarlo Ortiz.
+///*  URI: http://www.zerez.org
+///*  License: GNU General Public License v2 or later
+///*  License URI: http://www.gnu.org/licenses/gpl-2.0.html
+///*  Tags: test, flezz, mixin, plugin, css.
+///******************************************/
+///*  	Content
+///*
+///*  1. Included unconfig Flezz core.
+///*  2. Local variables.
+///*  3. Flezz overrrides.
+///*  4. Initialized modules
+///*  5. Initialized components
+///******************************************/
+///* 1 *//* INCLUDED UNCONFIG FLEZZ CORE *///
 @import '_default.less';
-///******************************************/
-///*             color palette              */
-///******************************************/
+///* 2 *//* LOCAL VARIABLES *///
 @theme-initial-dark:        false;
 @dark-background:           rgb(0,32,68);
 @dark-panel-background:     rgb(247,247,247);
 @dark-select-color:         rgb(0,143,206);       
 @link-color:                @twitter-LinK;
-///*    @theme-background                
-///*    @theme-panel-background  
-///*    @theme-select-color            
-///*    @theme-header-color              
-///*    @theme-nav-color         
-///*    @theme-color              
-///*    @theme-panel-color       
-///*    @theme-hover             
-///*    @theme-focus             
-///*    @theme-active             
-///*    @theme-border            
-///*    @theme-shadow-inset 
-///******************************************/
+///* 3 *//* FLEZZ OVERRRIDES *///
 ///* Docs Style variables  *///
 @star-up-font: @font-Light;
 @overflow-vertical: true;
-//
-///* Docs config Core */
-.flezz-font-init();
-.flezz-icon-init();
+///* 4 *//* FLEZZ CORE MODULES INITIALIZED *///
 .flezz-color-init();
-//.layout-init();
-//
-///* Docs Style aditional class *///
-@color-theme:#ce1b7e;
+.flezz-font-init();
+//.flezz-layout-init();
+//.flezz-ui-init();
+///* 5 *//* FLEZZ CORE COMPONENT INITIALIZED *///
+.buttons-init();
+.dropdowns-init();
+//.gallery-init();
+.inputs-init();
+.popups-init();
+//.selects-init();
+.tabs-init();
+.tiles-init();
+///* T *//* TEMPORAL CSS *///
+
 section.test {
     max-width: 700px;margin-bottom: @sm-gutter;padding: @sm-gutter;
     background-color: @theme-panel;border: 2px dashed @theme-header;
@@ -84,3 +97,7 @@ article{
 .test:first-of-type {margin-top: 50px;}
 li {display: inline-block;}
 //
+/* test theme -------- [ OK ] */@state:OK;
+///******************************************/
+///*  	FIN
+///******************************************/
