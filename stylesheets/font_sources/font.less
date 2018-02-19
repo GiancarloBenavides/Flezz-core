@@ -12,26 +12,25 @@
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. Included modules.
-///*  1. Local Variables.
-///*  2. Road map.
-///*  3. Base Modules.
-///*  4. Config mixin.
-///*  5. preconfigured patterns.
-///*  6. initialized patterns.
+/// * 1. Other components included.
+/// * 2. Local variables to the component.
+/// * 3. Component roadmap.
+/// * 4. Basic mix for this component.
+/// * 5. Configuration of the basic mixin of the component.
+/// * 6. Available classes as preconfigured basic patterns.
+/// * 7. Initialization of the component.
 ///******************************************/
-///* 1 *//* INCLUDED MODULES *///
+/// * 1 /// OTHER COMPONENTS INCLUDED ///
 @import '../_shared/_shared.less';
-///* 2 *//* LOCAL VARIABLES *///
+/// * 2 /// LOCAL VARIABLES TO THE COMPONENT ///
 .font-local-var() {
     
 }
-///* 3 *//* ROAD MAP */
+/// * 3 /// COMPONENT ROADMAP ///
 // --------------------------------------------------
 
 // --------------------------------------------------
-//
-///* 4 *//* BASE MODULES */
+/// * 4 /// BASIC MIX FOR THIS COMPONENT ///
 .fnt-family() when (@OpenSans = true) {
     .fnt-OpenSans(@font-path);
 }
@@ -55,9 +54,7 @@
 .fnt-family() when (@RobotoSlab = true) {
     .fnt-RobotoSlab(@font-path);
 }
-//
-///* 5 *//* CONFIG MIXIN */
-//
+/// * 5 /// CONFIGURATION OF THE BASIC MIXIN OF THE COMPONENT ///
 ///*  FONT SANS SERIF (Helvetica, Verdana) *///
 .fnt-OpenSans (@opc-font-path) when (@Font-Embedded = true) {
     @font-face {
@@ -243,16 +240,13 @@
         font-style: @family-style;
     }
 }
-
-//
-///* 6 *//* PRECONFIGURED PATTERNS */
+/// * 6 /// AVAILABLE CLASSES AS PRECONFIGURED BASIC PATTERNS ///
+///* This component does not have preconfigured classes available *///
+/// * 7 /// INITIALIZATION OF THE COMPONENT ///
 .font-family(){
     .fnt-family(); 
 }
-//
-///* 7 *//* INITIALIZED PATTERNS */
-///* This component does not initialize modules *///
-/* font -------------- [ + ] */@state:OK;
+/* font ------------------ [ + ] */@state:OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/

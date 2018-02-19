@@ -12,20 +12,17 @@
 ///******************************************/
 ///*  	Content
 ///*
-///*  1. Config Button variables.
-///*  2. Road map.
-///*  3. Base class.
-///*  4. Config mixin.
-///*  5. preconfigured patterns.
-///*  6. initialize patterns.
+/// * 1. Other components included.
+/// * 2. Local variables to the component.
+/// * 3. Component roadmap.
+/// * 4. Basic mix for this component.
+/// * 5. Configuration of the basic mixin of the component.
+/// * 6. Available classes as preconfigured basic patterns.
+/// * 7. Initialization of the component.
 ///******************************************/
-///* PATH */
-//
-///* Dependencies */
+/// * 1 /// OTHER COMPONENTS INCLUDED ///
 @import '../_shared/_shared.less';
-//
-///* 1 *//* CONFIG BUTTON VARIABLES */
-//
+/// * 2 /// LOCAL VARIABLES TO THE COMPONENT ///
 ///* global variables */
 ///* button general option */
 @button-text-transform: true;
@@ -66,7 +63,6 @@
 @button-caution-background-color: @caution;
 @button-alert-background-color: @alert;
 //
-///* local variables */
 .button-local-var() {
     @dfl-color: @button-default-font-color;
     @dfl-bck-color: @button-default-background-color;
@@ -81,15 +77,13 @@
     @dfl-ale-color: @button-alert-background-color;
     @dfl-dark-step: @button-dark-step;
 }
-//
-///* 2 *//* ROAD MAP */
+/// * 3 /// COMPONENT ROADMAP ///
 // --------------------------------------------------
 //button-outset=true;
 
 //
 // --------------------------------------------------
-//
-///* 3 *//* BASE CLASS */
+/// * 4 /// BASIC MIX FOR THIS COMPONENT ///
 ///* button box color, shape and size */
 .btn-box (@color: @dfl-color; @back-color: @dfl-bck-color; @border-color: @dfl-border-color; @border-width: @button-border-width; @size: @button-size; @border-shape: square; @Skeuomorphs: false; @expanded: false) {
     .btn-button-box (@color; @button-border-width; @size; @border-shape; @Skeuomorphs; @expanded);
@@ -189,8 +183,7 @@
     border-style: solid;
     border-width: @border-width;
 }
-//
-///* 4 *//* CONFIG MIXIN */
+/// * 5 /// CONFIGURATION OF THE BASIC MIXIN OF THE COMPONENT ///
 .btn-background-transition(@time: @button-transition-time) {
     -moz-transition: background-color @time ease-out;
     -o-transition: background-color @time ease-out;
@@ -289,9 +282,7 @@
 .btn-expanded(@expanded) when (@expanded = true) {
     display: block;
 }
-//
-///* 5 *//* PRECONFIGURED PATTERNS */
-//
+/// * 6 /// AVAILABLE CLASSES AS PRECONFIGURED BASIC PATTERNS ///
 ///* boostrap patterns *///
 .btn-default(@btn-size) {
     .btn-box(@color: black; @back-color: @dfl-bck-color; @border-color: darken(@dfl-bck-color,10%); @border-width: 1px; @size: @btn-size; @border-shape: radius; @Skeuomorphs: true);
@@ -461,7 +452,7 @@
         .button-expanded(@button-size; @dfl-dan-color)
     }
 }
-///* 6 *//* INITIALIZE PATTERNS */
+/// * 7 /// INITIALIZATION OF THE COMPONENT ///
 .buttons-init() {
     .button-local-var();
     .button-general();
@@ -470,7 +461,7 @@
     .button-test-disabled();
 }
 //
-/* button ------------ [ + ] */@state: OK;
+/* button ---------------- [ + ] */@state:OK;
 ///******************************************/
 ///*  	FIN
 ///******************************************/
